@@ -6,6 +6,8 @@
 
 (in-package :jie)
 
+(db.use "jie")
+
 (defparameter *templates-directory*
   (merge-pathnames #P"templates/" jie-config:*base-directory*))
 (defparameter *static-directory*
