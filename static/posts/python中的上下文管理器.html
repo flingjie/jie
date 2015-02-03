@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"> <head> <title>Jie&#039;s Home</title> <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" /> <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" /> <link href= "http://127.0.0.1:8000/css/style.css" rel="stylesheet" type="text/css" /> <link rel="alternate" href="http://127.0.0.1:8000/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="navigation"> <a href="http://127.0.0.1:8000">Jie&#039;s Home</a> | <a href="http://127.0.0.1:8000">Home</a>  </div> <div id="content"> <div class="article-meta">
+<h1 class="title">python中的上下文管理器</h1>
+<div class="tags">
+Tagged as <a href="http://127.0.0.1:8000/tag/python.html">python</a> </div>
+<div class="date">
+Written on 2014-03-14 17:13:46 </div>
+</div>
+<div class="article-content">
+<p>上下文管理器(context manager)是Python2.5开始支持的一种语法，用于处理指
+定代码块进入和退出时的操作。一般使用with语法，也可以直接调用相应的方法。</p>
+
+<p><strong>with语句</strong><br/>
+with语句是用来简化“try/finally”语句的，通常用于处理共享资源的获取和
+释放，比如文件、数据库和线程资源。它的用法如下：
+<code>python
+with VAR = EXPR:
+    BLOCK
+</code>
+其相当于进行了如下操作：
+<code>python
+VAR = EXPR
+VAR.__enter__()
+try:
+    BLOCK
+finally:
+    VAR.__exit__()
+</code></p>
+
+<p>例子如下：
+``` python
+import time
+class demo:
+    def <strong>init</strong>(self,label):
+        self.label = label</p>
+
+<pre><code>def __enter__(self):
+    self.start = time.time()
+
+def __exit__(self, exc_ty, exc_val, exc_tb):
+    end = time.time()
+    print ('{}: {}'.format(self.label, end - self.start))
+</code></pre>
+
+<p>with demo('counting'):
+    n = 10000000
+    while n &gt; 0:
+        n -= 1;</p>
+
+<h1>counting: 0.933553934097</h1>
+
+<pre><code>
+也可利用@contextmanager装饰器改写如下:
+``` python
+from contextlib import contextmanager
+import time
+
+@contextmanager
+def demo(label):
+    start = time.time()
+    try:
+        yield
+    finally:
+        end = time.time()
+        print('{}: {}'.format(label, end - start))
+
+with demo('counting'):
+    n = 10000000
+    while n > 0:
+        n -= 1
+# counting: 0.947228908539
+
+# 其中yield之前的所有代码都类似于__enter__方法的内容。而yield之后的所有
+# 代码类似__exit__方法的内容。</code></pre>
+ </div>
+<div class="relative-nav">
+<a href="http://127.0.0.1:8000/posts/python中的装饰器.html">Previous</a><br>
+<a href="http://127.0.0.1:8000/posts/python描述器.html">Next</a><br>
+</div>
+ </div> <div id="disqus_thread"></div>
+     <script type="text/javascript">
+       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+       var disqus_shortname = 'Jie's Home';
+       /* * * DON'T EDIT BELOW THIS LINE * * */
+       (function() {
+         var dsq = document.createElement('script');
+         dsq.type = 'text/javascript';
+         dsq.async = true;
+         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+           })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a> <div class="fineprint"> <hr> Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/css/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/css/logo_small.jpg" alt="Coleslaw logo" /> </a> </div> </body> </html>

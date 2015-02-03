@@ -1,0 +1,21 @@
+;;;;;
+title: ruby中的clone和dup
+tags: ruby
+date: 2014-03-12 15:04:59
+format: md
+;;;;;
+
+ruby中clone和dup都是对一个对象的浅拷贝，其区别如下：   
+1.clone会拷贝单例方法，而dup不会。
+``` ruby
+a = Object.new
+def a.hello
+    "hello"
+end
+
+a.dup.hello   # raises NoMethodError
+a.clone.hello # return "hello"
+```
+
+2.dup不能对frozen状态的对象进行拷贝，而clone可以。
+

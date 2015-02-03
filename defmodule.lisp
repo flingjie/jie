@@ -1,6 +1,7 @@
 (restas:define-module :jie
     (:use :cl
           :restas
+          :coleslaw
           :cl-mongo
           :cl-json))
 

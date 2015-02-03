@@ -1,0 +1,48 @@
+;;;;;
+title: python描述器
+tags: python
+date: 2014-03-15 16:27:32 
+format: md
+;;;;;
+
+在python中一个描述器就是定义下面的方法中一个或多个的一个对象：
+``` python
+__get__(self, instance, owner)
+__set__(self, instance, value)
+__delete__(self, instance)
+
+```
+
+如果一个对象同时定义了`__get__()`和`__set__()`，它叫做资料描述器。只定义了`__get__()`的描述器叫做非资料描述器(一般用于方法)。
+资料描述器和非资料描述器的区别在于：相对于实例字典的优先级。如果实例字典中有与资料描述器同名的属性，优先使用资料描述器中的；如果实例字典中有与非资料描述器中同名的属性，优先使用实例字典中的。即优先级 资料描述器 > 实例字典 > 非资料描述器。   
+要想写一个只读的资料描述器，只需同时定义`__get__()`和`__set__()`并在`__set__()`中抛出一个`AttributeError`。
+
+
+**描述器的调用**   
+描述器可以直接这么调用：`descriptor.__get__(obj)`，不过一般都是用来拦截对实例属性的访问。   
+描述器的调用规则如下：   
+
+* `__get__(self, instance, owner)`
+``` python
+  obj.descriptor         will call descriptor.__get__(obj. OwnerClass)
+  OwnerClass.descriptor  will call  descriptor.__get__(None, OwnerClass)
+```
+
+* `__set__(self, instance, value)`
+``` python
+  obj.descriptor = 5     will call  descriptor.__set__(obj, 5)
+```
+
+* `__delete__(self, instance)`
+``` python
+  del obj.descriptor     will call  descriptor.__delete__(obj)
+```
+
+
+*参考资料：*   
+[Python Gossip: 描述器](http://openhome.cc/Gossip/Python/Descriptor.html)   
+[Python描述器引导](https://pyzh.readthedocs.org/en/latest/Descriptor-HOW-TO-Guide.html)   
+[Descriptor HowTo Guide](http://docs.python.org/2/howto/descriptor.html)   
+[Python descriptor](http://me.veekun.com/blog/2012/05/23/python-faq-descriptors/)   
+[Python FAQ: Descriptors](http://me.veekun.com/blog/2012/05/23/python-faq-descriptors/)   
+

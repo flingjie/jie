@@ -1,0 +1,46 @@
+;;;;;
+title: python中的装饰器
+tags: python
+date: 2014-03-14 15:00:56
+format: md
+;;;;;
+
+装饰器的作用是在原有对象的基础上添加额外功能。python中可以将函数作为参
+数，进行装饰，返回经过修饰过的函数，比如：
+``` python
+def decorator(fn):
+    def wrapper():
+        print "*** wrapper ***"
+        fn()
+        print "*** wrapper ***"
+    return wrapper
+
+def origin_fn():
+    print "--- origin ---"
+
+decorated_fn = decorator(origin_fn)
+
+decorated_fn()
+        
+```
+
+python可以使用语法糖@来达到相同的作用，例子如下：
+``` python
+def makebold(fn):
+    def wrapper():
+        return "<b>" + fn() + "</b>"
+    return wrapper
+
+def makeitalic(fn):
+    def wrapper():
+        return "<i>" + fn() + "</i>"
+    return wrapper
+
+@makebold
+@makeitalic
+def helloworld():
+    return "hello world"
+
+print helloworld()
+## return <b><i>helloworld</i></b>
+```

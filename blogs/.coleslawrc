@@ -1,0 +1,20 @@
+(:author "Jie"
+ :deploy-dir "~/quicklisp/local-projects/jie/static"
+ :domain "http://127.0.0.1:8000"
+ :feeds ("lisp")
+ :plugins ((analytics :tracking-code "jie")
+           (disqus :shortname "Jie's Home")
+           ; (incremental)  ;; *Remove comment to enable incremental builds.
+           (mathjax)
+           (sitemap)
+          )
+  :routing ((:post           "posts/~a")
+            (:tag-index      "tag/~a")
+            (:month-index    "date/~a")
+            (:numeric-index  "~d")
+            (:feed           "~a.xml")
+            (:tag-feed       "tag/~a.xml"))
+ :sitenav ((:url "http://127.0.0.1:8000" :name "Home")
+          )
+ :title "Jie's Home"
+ :theme "hyde")

@@ -1,0 +1,44 @@
+;;;;;
+title: Javascript Tips
+tags: javascript
+date: 2014-03-09 10:04:47
+format: md
+;;;;;
+
+** Append an array to existing Array **
+``` javascript Append an array to existing Array 
+var a = [1,2,3];
+var b = [4,5,6];
+Array.prototype.push.apply(a,b);
+// a contains [1,2,3,4,5,6]
+```
+  And use concat() method for the same but cancat() creates new array while Array Prototype push append to existing array itself.
+
+* * * * *
+
+** Define a function which takes a string as an argument, and return the same string separated by a space **
+``` javascript separated by a space
+function spacify(str){
+    return str.split('').join(' ');
+}
+```
+
+* * * * *  
+
+** Pass string argument to _console.log()_ **
+``` javascript
+function log(){
+    console.log.apply(console, arguments);
+}
+```
+    
+** Prefix all logged messages with _"(app)"_ **
+``` javascript
+function log(){
+    var args = Array.prototype.slice.call(arguments);
+    args.unshift('(app)');
+        
+    console.log.apply(console, args);
+}
+```
+

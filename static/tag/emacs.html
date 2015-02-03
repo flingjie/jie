@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"> <head> <title>Jie&#039;s Home</title> <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" /> <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" /> <link href= "http://127.0.0.1:8000/css/style.css" rel="stylesheet" type="text/css" /> <link rel="alternate" href="http://127.0.0.1:8000/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="navigation"> <a href="http://127.0.0.1:8000">Jie&#039;s Home</a> | <a href="http://127.0.0.1:8000">Home</a>  </div> <div id="content"> <h1 class="title">Content tagged emacs</h1> <div class="article-meta"> <a class="article-title" href="http://127.0.0.1:8000/posts/使用Emacs编辑clojure.html">使用Emacs编辑clojure</a> <div class="date"> posted on 2014-03-29 10:39:00</div> <div class="article"><p>1.<strong>使用环境</strong>：
+ubuntu12.04 + emacs24 + leiningen2.3.4</p>
+
+<p>2.<strong>配置emacs</strong><br/>
+  a.添加package地址，在<code>~/.emacs.d/init.el</code>中加入：   </p>
+
+<pre><code>(require 'package)
+(add-to-list 'package-archives
+         '(&quot;marmalade&quot; . &quot;http://marmalade-repo.org/packages/&quot;))
+(package-initialize)
+</code></pre>
+
+<p>b.安装相关插件，在<code>~/.emacs.d/init.el</code>中加入：</p>
+
+<pre><code>(defvar my-packages '(starter-kit
+                      starter-kit-lisp
+                      starter-kit-bindings
+                      starter-kit-eshell
+                      clojure-mode
+                      clojure-test-mode
+                      cider))
+
+(dolist (p my-packages)
+    (when (not (package-installed-p p))
+        (package-install p)))
+</code></pre>
+
+<p>3.<strong>编辑相关操作</strong><br/>
+a.文件、窗口操作
+<code>text
+C-x C-f    打开文件
+C-x C-s    保存文件
+C-x b      切换buffer
+C-x k      关闭当前buffer
+C-x o      切换到下一buffer
+C-x 0      隐藏当前buffer
+C-x 1      隐藏其他buffer
+C-x 2      垂直分割窗口
+C-x 3      水平分割窗口
+</code></p>
+
+<p>b.移动操作
+<code>
+C-a    移动到行头
+C-e    移动到行尾
+C-n    移动到下一行
+C-p    移动到上一行
+C-b    向后移动一个字符
+C-f    向前移动一个字符
+M-f    向前移动一个单词
+M-b    向后移动一个单词
+C-v    向下翻页
+M-v    向上翻页
+M-&lt;    移动到buffer开头
+M-&gt;    移动到buffer末尾
+C-M-f  移动到后一个括号
+C-M-f  移动到前一个括号
+</code></p>
+
+<p>c.编辑操作
+```
+C-d        删除一个字符
+M-d        删除一个单词
+C-k        删除一行
+C-w        删除选中区域
+M-w        复制选中区域
+C-y        粘帖
+C-j        换行</p>
+
+<p>C-M-Space  选中光标所在的S表达式
+C-M-t      交换连个S表达式位置
+M-1 (      在当前S表达式外添加一对括号
+M-s        删除当前S表达式外的一对括号
+M-r        删除当前S表达式外的一对括号(包括内容)
+C-)        将后面的括号向后移动一个元素
+           (a b (c d) e f) -&gt; (a b (c d e) f)
+C-}        将后面的括号向前移动一个元素
+           (a b (c d) e f) -&gt; (a b (c) d e f)
+C-(        将前面的括号向前移动一个元素
+C-{        将前面的括号向后移动一个元素
+C-M-q      代码对齐</p>
+
+<pre><code>
+d.帮助操作</code></pre>
+
+<p>C-h b    查看当前的key绑定
+C-h m    查看当前的编辑模式
+C-h a    查找一个关键词的相关帮助
+C-h k    查看一个key的绑定
+```</p>
+
+<p>4.<strong>编译相关操作</strong>
+<code>
+C-c M-j    cider-jack-in,启动nREPL
+C-c C-e    执行s表达式
+C-c C-r    执行当前选中区
+C-c C-z    运行lisp进程
+</code></p>
+
+<p>5.<strong>宏操作</strong>
+<code>
+C-x (   ;;开始录制宏
+...     ;;输入操作
+C-x )   ;;结束录制
+C-x e   ;;执行宏
+</code></p>
+</div> </div> <div id="relative-nav">   </div> <div id="tagsoup"> <p>This blog covers <a href="http://127.0.0.1:8000/tag/website.html">website</a>, <a href="http://127.0.0.1:8000/tag/visualize.html">visualize</a>, <a href="http://127.0.0.1:8000/tag/tools.html">tools</a>, <a href="http://127.0.0.1:8000/tag/ruby.html">ruby</a>, <a href="http://127.0.0.1:8000/tag/python.html">python</a>, <a href="http://127.0.0.1:8000/tag/learning.html">learning</a>, <a href="http://127.0.0.1:8000/tag/javascript.html">javascript</a>, <a href="http://127.0.0.1:8000/tag/emacs.html">emacs</a>, <a href="http://127.0.0.1:8000/tag/clojure.html">clojure</a> </div> <div id="monthsoup"> <p>View content from <a href="http://127.0.0.1:8000/date/2014-03.html">2014-03</a>, <a href="http://127.0.0.1:8000/date/2014-04.html">2014-04</a> </div> </div>  <div class="fineprint"> <hr> Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/css/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/css/logo_small.jpg" alt="Coleslaw logo" /> </a> </div> </body> </html>

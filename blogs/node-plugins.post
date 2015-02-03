@@ -1,0 +1,16 @@
+;;;;;
+title: node常用库（不断补充中）
+tags: javascript, visualize
+date: 2014-04-16 10:44:09
+format: md
+;;;;;
+
+* **可视化**
+  * [D3.js](http://d3js.org/)
+  * [vis.js](http://visjs.org/)
+
+<br>
+
+* **其他**
+  * [PourOver](http://nytimes.github.io/pourover/)   
+    A library for simple, fast filtering and sorting of large collections.

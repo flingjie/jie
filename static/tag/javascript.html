@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"> <head> <title>Jie&#039;s Home</title> <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" /> <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" /> <link href= "http://127.0.0.1:8000/css/style.css" rel="stylesheet" type="text/css" /> <link rel="alternate" href="http://127.0.0.1:8000/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="navigation"> <a href="http://127.0.0.1:8000">Jie&#039;s Home</a> | <a href="http://127.0.0.1:8000">Home</a>  </div> <div id="content"> <h1 class="title">Content tagged javascript</h1> <div class="article-meta"> <a class="article-title" href="http://127.0.0.1:8000/posts/node常用库不断补充中.html">node常用库（不断补充中）</a> <div class="date"> posted on 2014-04-16 10:44:09</div> <div class="article"><ul>
+<li><strong>可视化</strong></li>
+<li><a href="http://d3js.org/" >D3.js</a></li>
+<li><a href="http://visjs.org/" >vis.js</a></li>
+</ul>
+
+<p><br></p>
+
+<ul>
+<li><strong>其他</strong></li>
+<li><a href="http://nytimes.github.io/pourover/" >PourOver</a><br/>
+A library for simple, fast filtering and sorting of large collections.</li>
+</ul>
+</div> </div><div class="article-meta"> <a class="article-title" href="http://127.0.0.1:8000/posts/Javascript-Tips.html">Javascript Tips</a> <div class="date"> posted on 2014-03-09 10:04:47</div> <div class="article"><p><em>* Append an array to existing Array *</em>
+<code>javascript Append an array to existing Array 
+var a = [1,2,3];
+var b = [4,5,6];
+Array.prototype.push.apply(a,b);
+// a contains [1,2,3,4,5,6]
+</code>
+  And use concat() method for the same but cancat() creates new array while Array Prototype push append to existing array itself.</p>
+
+<hr/>
+
+<p><em>* Define a function which takes a string as an argument, and return the same string separated by a space *</em>
+<code>javascript separated by a space
+function spacify(str){
+    return str.split('').join(' ');
+}
+</code></p>
+
+<hr/>
+
+<p><em>* Pass string argument to <em>console.log()</em> *</em>
+<code>javascript
+function log(){
+    console.log.apply(console, arguments);
+}
+</code></p>
+
+<p><em>* Prefix all logged messages with <em>&quot;(app)&quot;</em> *</em>
+``` javascript
+function log(){
+    var args = Array.prototype.slice.call(arguments);
+    args.unshift('(app)');</p>
+
+<pre><code>console.log.apply(console, args);
+</code></pre>
+
+<p>}
+```</p>
+</div> </div> <div id="relative-nav">   </div> <div id="tagsoup"> <p>This blog covers <a href="http://127.0.0.1:8000/tag/website.html">website</a>, <a href="http://127.0.0.1:8000/tag/visualize.html">visualize</a>, <a href="http://127.0.0.1:8000/tag/tools.html">tools</a>, <a href="http://127.0.0.1:8000/tag/ruby.html">ruby</a>, <a href="http://127.0.0.1:8000/tag/python.html">python</a>, <a href="http://127.0.0.1:8000/tag/learning.html">learning</a>, <a href="http://127.0.0.1:8000/tag/javascript.html">javascript</a>, <a href="http://127.0.0.1:8000/tag/emacs.html">emacs</a>, <a href="http://127.0.0.1:8000/tag/clojure.html">clojure</a> </div> <div id="monthsoup"> <p>View content from <a href="http://127.0.0.1:8000/date/2014-03.html">2014-03</a>, <a href="http://127.0.0.1:8000/date/2014-04.html">2014-04</a> </div> </div>  <div class="fineprint"> <hr> Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/css/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/css/logo_small.jpg" alt="Coleslaw logo" /> </a> </div> </body> </html>
