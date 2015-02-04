@@ -1,2 +1,2 @@
 <?xml version="1.0"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"> <channel> <title>Jie&#039;s Blog</title> <link>http://127.0.0.1:8000/blog</link> <atom:link href="http://127.0.0.1:8000/blog/rss.xml" rel="self" type="application/rss+xml" /> <language>en-us</language> <pubDate>Wed, 04 Feb 2015 21:25:54 +0800</pubDate>  </channel> </rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"> <channel> <title>Jie&#039;s Blog</title> <link>http://127.0.0.1:8000/blog</link> <atom:link href="http://127.0.0.1:8000/blog/rss.xml" rel="self" type="application/rss+xml" /> <language>en-us</language> <pubDate>Wed, 04 Feb 2015 22:37:15 +0800</pubDate>  </channel> </rss>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<feed xmlns="http://www.w3.org/2005/Atom"> <title>Jie&#039;s Blog</title> <link href="http://127.0.0.1:8000/blog"/> <link type="application/atom+xml" rel="self" href="http://127.0.0.1:8000/blog/atom.xml"/> <updated>Wed, 04 Feb 2015 21:25:54 +0800</updated> <author> <name>Jie</name> </author> <entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/VIM-for-Rails.html"/> <title>VIM for Rails</title> <published>2014-05-27 01:35:30</published> <updated>2014-05-27 01:35:30</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;p&gt;使用vim来进行Rails开发，对配置过程略做记录，前提vim已安装完毕。&lt;br/&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"> <title>Jie&#039;s Blog</title> <link href="http://127.0.0.1:8000/blog"/> <link type="application/atom+xml" rel="self" href="http://127.0.0.1:8000/blog/atom.xml"/> <updated>Wed, 04 Feb 2015 22:37:15 +0800</updated> <author> <name>Jie</name> </author> <entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/VIM-for-Rails.html"/> <title>VIM for Rails</title> <published>2014-05-27 01:35:30</published> <updated>2014-05-27 01:35:30</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;p&gt;使用vim来进行Rails开发，对配置过程略做记录，前提vim已安装完毕。&lt;br/&gt;
 1、 &lt;strong&gt;安装pathogen&lt;/strong&gt;&lt;br/&gt;
 pathogens是vim的插件管理工具，可简化对vim插件的管理。&lt;br/&gt;
 安装如下：&lt;/p&gt;
@@ -70,7 +70,7 @@ html编写插件，输入&lt;code&gt;div#header&lt;/code&gt;，然后按&lt;code
 括号自动补全&lt;/p&gt;
 </content> </entry><entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/Metaprogrammingcode-generator.html"/> <title>Metaprogramming(code generator)</title> <published>2014-05-03 19:23:53</published> <updated>2014-05-03 19:23:53</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;p&gt;根本没有什么元编程，只有编程！？
 &lt;br&gt;
-{% img /static/img/CodeWriter.png %}
+&lt;img src=&quot;/static/img/CodeWriter.png&quot; alt=&quot;&quot; /&gt;
 &lt;br&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -101,7 +101,7 @@ C.my_method   # =&gt;  &quot;a class method&quot;&lt;/code&gt;&lt;/pre&gt;
 另外，类只是一个增强的模块，因此，任何适用于类的东西也
 适用于模块。
 &lt;br&gt;
-{% img /static/img/ObjectDefinitions.png %}
+&lt;img src=&quot;/static/img/ObjectDefinitions.png&quot; alt=&quot;Object Definitions&quot; /&gt;
 &lt;br&gt;
  * 注1:在类(或模块)定义时，类本身充当了当前对象self的角色。&lt;/p&gt;
 
@@ -131,10 +131,10 @@ end&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;注7: 如果对象是eigenclass，那么Ruby不是从它所在的类开始，而是从这个
    eigenclass类中开始查找方法，如图。
    &lt;br&gt;
-   {% img /static/img/eigenclassMethod.png %}&lt;/p&gt;&lt;/li&gt;
+   &lt;img src=&quot;/static/img/eigenclassMethod.png&quot; alt=&quot;Eigenclass&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;注8: 一个对象的eigenclass的超类是这个对象的类，一个类的eigenclass的
    超类是这个类的超类的eigenclass,如图。
-   {% img /static/img/eigenclassInherit.png %}&lt;/p&gt;&lt;/li&gt;
+   &lt;img src=&quot;/static/img/eigenclassInherit.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;注9: 通过向类的eigenclass中混入模块来定义类方法。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;注10: 通过给一个对象的eigenclass混入模块来定义单件方法。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;注11: 1. 给方法定义一个别名；2.重新定义这个方法；3.在新的方法中调用老的方法。&lt;/p&gt;&lt;/li&gt;
@@ -142,7 +142,7 @@ end&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;
 </content> </entry><entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/MetaprogrammingBlock.html"/> <title>Metaprogramming(Block)</title> <published>2014-05-03 17:06:28</published> <updated>2014-05-03 17:06:28</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;p&gt;块继承自“函数式编程语言(functional programming languages)”的世界。
 &lt;br&gt;
-{% img /static/img/blocks.png %}
+&lt;img src=&quot;/static/img/blocks.png&quot; alt=&quot;&quot; /&gt;
 &lt;br&gt;
 * 注1: 在一个方法中，可以向Ruby询问当前的方法调用是否包含块。这可以通
   过Kernel#block_given?()方法来做到。&lt;/p&gt;
@@ -184,7 +184,7 @@ ArgumentError错误；而proc则会自动调整传递进来的参数，通过忽
 供的编程技巧。本章主要专注于消除重复代码的技巧，通过用两种不同的方式对一
 段代码的重构来展示Ruby的强大功能，涉及的知识点比较少。
 &lt;br&gt;
-{% img /static/img/methods.png %}
+&lt;img src=&quot;/static/img/methods.png&quot; alt=&quot;&quot; /&gt;
 &lt;br&gt;
 * 注1: method_missing()是Kernel中的一个实例方法，当Ruby找不到调用的方
   法时，它最后就会调用这个名为method_missing()的方法。&lt;/p&gt;
@@ -193,10 +193,12 @@ ArgumentError错误；而proc则会自动调整传递进来的参数，通过忽
 &lt;li&gt;注2: 移除一个对象中的所有方法，以便把它们转换成幽灵方法。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;-------------------------------------------------------------------------------
-&lt;strong&gt;重构例子&lt;/strong&gt;&lt;/p&gt;
+&lt;hr/&gt;
 
-&lt;pre&gt;&lt;code&gt;class Computer
+&lt;p&gt;&lt;strong&gt;重构例子&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 原始代码
+class Computer
   def initialize(computer_id, data_source)
     @id = computer_id
     @data_source = data_source
@@ -225,7 +227,8 @@ ArgumentError错误；而proc则会自动调整传递进来的参数，通过忽
   # ...
 end&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;class Computer
+&lt;pre&gt;&lt;code&gt;# 使用动态方法重构
+class Computer
   def initialize(computer_id, data_source)
     @id = computer_id
     @data_source = data_source
@@ -250,7 +253,8 @@ end&lt;/code&gt;&lt;/pre&gt;
   define_component :keyboard
 end&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;class Computer
+&lt;pre&gt;&lt;code&gt;# 使用幽灵方法重构
+class Computer
   # 创建白板， 以免方法命名冲突
   instance_methods.each do |m|
     undef_method m unless m.to_s =~ /^__|method_missing|respond_to?/
@@ -280,7 +284,7 @@ end&lt;/code&gt;&lt;/pre&gt;
 些语言构件存在于其中的系统称为&lt;strong&gt;对象模型&lt;/strong&gt;。在对象模型中，你可以找到诸
 如&amp;quot;这个方法来自哪个类&amp;quot;和&amp;quot;当我包含这个模块是会发生什么&amp;quot;此类问题的答案。
 &lt;br&gt;
-{% img /static/img/ObjectModel.png %}
+&lt;img src=&quot;/static/img/ObjectModel.png&quot; alt=&quot;&quot; /&gt;
 &lt;br&gt;
 * 注1: class关键字更像是一个作用域操作符而不是类型声明语句，它的确可以
   创建一个还不存在的类，不过也可以把这看成是一个副作用。对于class关键
@@ -305,12 +309,12 @@ obj = MyClass.new
 obj.class              # =&gt; MyClass&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;上面代码结构可表示为：
-{% img /static/img/ObjectClass.png %}&lt;/p&gt;
+&lt;img src=&quot;/static/img/ObjectClass.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;注4: 一个类只不过是一个增强的Module，它只是在Module基础上增加了三个
   方法——new()、allocate()和superclass()而已，结构如下。
-  {% img /static/img/ModuleClass.png %}&lt;/p&gt;&lt;/li&gt;
+  &lt;img src=&quot;/static/img/ModuleClass.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;注5: 每个类都有一个祖先链，这个链从自己所属的类开始，向上直到BasicObject结束。其中，Object类包含了Kernel模块，故Kernel方法对所有对象可用。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content> </entry><entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/MetaprogrammingTutorial.html"/> <title>Metaprogramming(Tutorial)</title> <published>2014-04-29 21:56:38</published> <updated>2014-04-29 21:56:38</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;p&gt;元编程(Metaprogramming)，简单来说，就是写出编写代码的代码。正式的定义为：编写在运行时操纵语言构件的代码。
@@ -319,7 +323,7 @@ Ruby是一门对元编程支持很强大的语言(只是比lisp弱一点)，而�
 握了Ruby。
 下图简要总结了&amp;lt;Ruby元编程&amp;gt;的基本内容，经验有限，不足之处请多指正。
 &lt;br&gt;
-{% img /static/img/RubyMetaprogramming.png %}
+&lt;img src=&quot;/static/img/RubyMetaprogramming.png&quot; alt=&quot;&quot; /&gt;
 &lt;br&gt; 
 就如蜘蛛侠大叔曾经说的，能力越大，责任越大。元编程赋予了你强大的能力，同时也意味着你需要肩负更大的责任。&lt;/p&gt;
 </content> </entry><entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/A-Algorithm.html"/> <title>A* Algorithm</title> <published>2014-04-22 18:10:18</published> <updated>2014-04-22 18:10:18</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;p&gt;A*算法是一种经典的启发式搜索算法,公式表示为：f(n)=g(n)+h(n)，其中f(n)
@@ -456,7 +460,7 @@ Ruby是一门对元编程支持很强大的语言(只是比lisp弱一点)，而�
 &lt;a href=&quot;http://www.cppblog.com/mythit/archive/2009/04/19/80492.aspx&quot; &gt;A*算法入门&lt;/a&gt;&lt;/p&gt;
 </content> </entry><entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/Crawler.html"/> <title>Crawler</title> <published>2014-04-19 12:26:04</published> <updated>2014-04-19 12:26:04</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;portia&lt;/strong&gt;&lt;br/&gt;
-  Visual scraping for Scrapy. https://github.com/scrapinghub/portia&lt;/li&gt;
+  Visual scraping for Scrapy. &lt;a href=&quot;https://github.com/scrapinghub/portia&quot;&gt;https://github.com/scrapinghub/portia&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content> </entry><entry> <link type="text/html" rel="alternate" href="http://127.0.0.1:8000/blog/posts/Online-learning-webiste.html"/> <title>Online learning webiste</title> <published>2014-04-16 11:26:11</published> <updated>2014-04-16 11:26:11</updated> <author> <name>Jie</name> <uri>http://127.0.0.1:8000/blog</uri> </author> <content type="html">&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://learnlayout.com/&quot; &gt;Learning CSS&lt;/a&gt;&lt;/li&gt;

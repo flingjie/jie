@@ -7,7 +7,7 @@ format: md
 
 块继承自“函数式编程语言(functional programming languages)”的世界。
 <br>
-{% img /static/img/blocks.png %}
+![](/static/img/blocks.png)
 <br>
 * 注1: 在一个方法中，可以向Ruby询问当前的方法调用是否包含块。这可以通
   过Kernel#block_given?()方法来做到。

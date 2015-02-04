@@ -10,7 +10,7 @@ Ruby是一门对元编程支持很强大的语言(只是比lisp弱一点)，而�
 握了Ruby。
 下图简要总结了<Ruby元编程>的基本内容，经验有限，不足之处请多指正。
 <br>
-{% img /static/img/RubyMetaprogramming.png %}
+![](/static/img/RubyMetaprogramming.png)
 <br> 
 就如蜘蛛侠大叔曾经说的，能力越大，责任越大。元编程赋予了你强大的能力，同时也意味着你需要肩负更大的责任。
 

@@ -7,7 +7,7 @@ format: md
 
 根本没有什么元编程，只有编程！？
 <br>
-{% img /static/img/CodeWriter.png %}
+![](/static/img/CodeWriter.png)
 <br>
 
 * 注1: 由于代码字符串和块非常相似，因此，在很多情况下，可以选择使用任

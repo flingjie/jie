@@ -17,7 +17,7 @@
 些语言构件存在于其中的系统称为<strong>对象模型</strong>。在对象模型中，你可以找到诸
 如&quot;这个方法来自哪个类&quot;和&quot;当我包含这个模块是会发生什么&quot;此类问题的答案。
 <br>
-{% img /static/img/ObjectModel.png %}
+<img src="/static/img/ObjectModel.png" alt="" />
 <br>
 * 注1: class关键字更像是一个作用域操作符而不是类型声明语句，它的确可以
   创建一个还不存在的类，不过也可以把这看成是一个副作用。对于class关键
@@ -42,12 +42,12 @@ obj = MyClass.new
 obj.class              # => MyClass</code></pre>
 
 <p>上面代码结构可表示为：
-{% img /static/img/ObjectClass.png %}</p>
+<img src="/static/img/ObjectClass.png" alt="" /></p>
 
 <ul>
 <li><p>注4: 一个类只不过是一个增强的Module，它只是在Module基础上增加了三个
   方法——new()、allocate()和superclass()而已，结构如下。
-  {% img /static/img/ModuleClass.png %}</p></li>
+  <img src="/static/img/ModuleClass.png" alt="" /></p></li>
 <li><p>注5: 每个类都有一个祖先链，这个链从自己所属的类开始，向上直到BasicObject结束。其中，Object类包含了Kernel模块，故Kernel方法对所有对象可用。</p></li>
 </ul>
  <ul class="pager"> <li class="previous"><a href="http://127.0.0.1:8000/blog/posts/MetaprogrammingTutorial.html">&larr; Previous</a></li>

@@ -4,7 +4,7 @@
   (:url "static")
   (restas.directory-publisher:*directory* *static-directory*))
 
-(mount-module -static- (#:restas.directory-publisher)
+(mount-module -blog- (#:restas.directory-publisher)
   (:url "blog")
   (restas.directory-publisher:*directory* *blog-directory*))
 

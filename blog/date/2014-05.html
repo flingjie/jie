@@ -82,7 +82,7 @@ html编写插件，输入<code>div#header</code>，然后按<code>ctrl+e</code>�
 括号自动补全</p>
  </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/Metaprogrammingcode-generator.html">Metaprogramming(code generator)</a></h1> <p class="date-posted">posted on 2014-05-03 19:23:53</p> <p>根本没有什么元编程，只有编程！？
 <br>
-{% img /static/img/CodeWriter.png %}
+<img src="/static/img/CodeWriter.png" alt="" />
 <br></p>
 
 <ul>
@@ -113,7 +113,7 @@ C.my_method   # =>  "a class method"</code></pre>
 另外，类只是一个增强的模块，因此，任何适用于类的东西也
 适用于模块。
 <br>
-{% img /static/img/ObjectDefinitions.png %}
+<img src="/static/img/ObjectDefinitions.png" alt="Object Definitions" />
 <br>
  * 注1:在类(或模块)定义时，类本身充当了当前对象self的角色。</p>
 
@@ -143,10 +143,10 @@ end</code></pre>
 <li><p>注7: 如果对象是eigenclass，那么Ruby不是从它所在的类开始，而是从这个
    eigenclass类中开始查找方法，如图。
    <br>
-   {% img /static/img/eigenclassMethod.png %}</p></li>
+   <img src="/static/img/eigenclassMethod.png" alt="Eigenclass" /></p></li>
 <li><p>注8: 一个对象的eigenclass的超类是这个对象的类，一个类的eigenclass的
    超类是这个类的超类的eigenclass,如图。
-   {% img /static/img/eigenclassInherit.png %}</p></li>
+   <img src="/static/img/eigenclassInherit.png" alt="" /></p></li>
 <li><p>注9: 通过向类的eigenclass中混入模块来定义类方法。</p></li>
 <li><p>注10: 通过给一个对象的eigenclass混入模块来定义单件方法。</p></li>
 <li><p>注11: 1. 给方法定义一个别名；2.重新定义这个方法；3.在新的方法中调用老的方法。</p></li>
@@ -154,7 +154,7 @@ end</code></pre>
 </ul>
  </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/MetaprogrammingBlock.html">Metaprogramming(Block)</a></h1> <p class="date-posted">posted on 2014-05-03 17:06:28</p> <p>块继承自“函数式编程语言(functional programming languages)”的世界。
 <br>
-{% img /static/img/blocks.png %}
+<img src="/static/img/blocks.png" alt="" />
 <br>
 * 注1: 在一个方法中，可以向Ruby询问当前的方法调用是否包含块。这可以通
   过Kernel#block_given?()方法来做到。</p>
@@ -196,7 +196,7 @@ ArgumentError错误；而proc则会自动调整传递进来的参数，通过忽
 供的编程技巧。本章主要专注于消除重复代码的技巧，通过用两种不同的方式对一
 段代码的重构来展示Ruby的强大功能，涉及的知识点比较少。
 <br>
-{% img /static/img/methods.png %}
+<img src="/static/img/methods.png" alt="" />
 <br>
 * 注1: method_missing()是Kernel中的一个实例方法，当Ruby找不到调用的方
   法时，它最后就会调用这个名为method_missing()的方法。</p>
@@ -205,10 +205,12 @@ ArgumentError错误；而proc则会自动调整传递进来的参数，通过忽
 <li>注2: 移除一个对象中的所有方法，以便把它们转换成幽灵方法。</li>
 </ul>
 
-<p>-------------------------------------------------------------------------------
-<strong>重构例子</strong></p>
+<hr/>
 
-<pre><code>class Computer
+<p><strong>重构例子</strong></p>
+
+<pre><code># 原始代码
+class Computer
   def initialize(computer_id, data_source)
     @id = computer_id
     @data_source = data_source
@@ -237,7 +239,8 @@ ArgumentError错误；而proc则会自动调整传递进来的参数，通过忽
   # ...
 end</code></pre>
 
-<pre><code>class Computer
+<pre><code># 使用动态方法重构
+class Computer
   def initialize(computer_id, data_source)
     @id = computer_id
     @data_source = data_source
@@ -262,7 +265,8 @@ end</code></pre>
   define_component :keyboard
 end</code></pre>
 
-<pre><code>class Computer
+<pre><code># 使用幽灵方法重构
+class Computer
   # 创建白板， 以免方法命名冲突
   instance_methods.each do |m|
     undef_method m unless m.to_s =~ /^__|method_missing|respond_to?/
@@ -292,7 +296,7 @@ end</code></pre>
 些语言构件存在于其中的系统称为<strong>对象模型</strong>。在对象模型中，你可以找到诸
 如&quot;这个方法来自哪个类&quot;和&quot;当我包含这个模块是会发生什么&quot;此类问题的答案。
 <br>
-{% img /static/img/ObjectModel.png %}
+<img src="/static/img/ObjectModel.png" alt="" />
 <br>
 * 注1: class关键字更像是一个作用域操作符而不是类型声明语句，它的确可以
   创建一个还不存在的类，不过也可以把这看成是一个副作用。对于class关键
@@ -317,12 +321,12 @@ obj = MyClass.new
 obj.class              # => MyClass</code></pre>
 
 <p>上面代码结构可表示为：
-{% img /static/img/ObjectClass.png %}</p>
+<img src="/static/img/ObjectClass.png" alt="" /></p>
 
 <ul>
 <li><p>注4: 一个类只不过是一个增强的Module，它只是在Module基础上增加了三个
   方法——new()、allocate()和superclass()而已，结构如下。
-  {% img /static/img/ModuleClass.png %}</p></li>
+  <img src="/static/img/ModuleClass.png" alt="" /></p></li>
 <li><p>注5: 每个类都有一个祖先链，这个链从自己所属的类开始，向上直到BasicObject结束。其中，Object类包含了Kernel模块，故Kernel方法对所有对象可用。</p></li>
 </ul>
  </div> <div id="relative-nav"> <ul class="pager">   </ul> </div> <div class="row-fluid"> <p>This blog covers <a href="http://127.0.0.1:8000/blog/tag/website.html">website</a>, <a href="http://127.0.0.1:8000/blog/tag/visualize.html">visualize</a>, <a href="http://127.0.0.1:8000/blog/tag/vim.html">vim</a>, <a href="http://127.0.0.1:8000/blog/tag/tools.html">tools</a>, <a href="http://127.0.0.1:8000/blog/tag/ruby.html">ruby</a>, <a href="http://127.0.0.1:8000/blog/tag/rails.html">rails</a>, <a href="http://127.0.0.1:8000/blog/tag/python.html">python</a>, <a href="http://127.0.0.1:8000/blog/tag/mindmap.html">mindmap</a>, <a href="http://127.0.0.1:8000/blog/tag/learning.html">learning</a>, <a href="http://127.0.0.1:8000/blog/tag/javascript.html">javascript</a>, <a href="http://127.0.0.1:8000/blog/tag/emacs.html">emacs</a>, <a href="http://127.0.0.1:8000/blog/tag/clojure.html">clojure</a>, <a href="http://127.0.0.1:8000/blog/tag/algorithm.html">algorithm</a>, <a href="http://127.0.0.1:8000/blog/tag/a.html">a*</a> </p> </div> <div class="row-fluid"> <p>View content from <a href="http://127.0.0.1:8000/blog/date/2014-03.html">2014-03</a>, <a href="http://127.0.0.1:8000/blog/date/2014-04.html">2014-04</a>, <a href="http://127.0.0.1:8000/blog/date/2014-05.html">2014-05</a> </p> </div> </div>  <div class="row-fluid"> <hr> <p class="fineprint">Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/blog/img/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/blog/img/logo_small.jpg" alt="Coleslaw logo" /></p> </a> </div> </div> </div> </div> <script src="http://127.0.0.1:8000/blog/js/bootstrap.min.js"></script> </body> </html>
