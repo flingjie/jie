@@ -4,5 +4,9 @@
   (:url "static")
   (restas.directory-publisher:*directory* *static-directory*))
 
+(mount-module -static- (#:restas.directory-publisher)
+  (:url "blog")
+  (restas.directory-publisher:*directory* *blog-directory*))
+
 (define-route home ("")
-  "jell")
+  (merge-pathnames "index.html" *blog-directory*))

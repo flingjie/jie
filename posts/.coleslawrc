@@ -17,4 +17,4 @@
  :sitenav ((:url "http://127.0.0.1:8000" :name "Home")
           )
  :title "Jie's Home"
- :theme "hyde")
+ :theme "readable")
