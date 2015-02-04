@@ -1,9 +1,9 @@
 (:author "Jie"
  :deploy-dir "~/quicklisp/local-projects/jie/blog"
- :domain "http://127.0.0.1:8000"
- :feeds ("lisp")
+ :domain "http://127.0.0.1:8000/blog"
+ :feeds ("jie")
  :plugins ((analytics :tracking-code "jie")
-           (disqus :shortname "Jie's Home")
+           (disqus :shortname "Jie's Blog")
            ; (incremental)  ;; *Remove comment to enable incremental builds.
            (mathjax)
            (sitemap)
@@ -16,5 +16,5 @@
             (:tag-feed       "tag/~a.xml"))
  :sitenav ((:url "http://127.0.0.1:8000" :name "Home")
           )
- :title "Jie's Home"
+ :title "Jie's Blog"
  :theme "readable")
