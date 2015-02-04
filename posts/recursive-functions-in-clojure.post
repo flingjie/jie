@@ -7,6 +7,7 @@ format: md
 
 一般函数可以通过调用自身来实现递归的效果，但这种方式会消耗栈有导致栈
 溢出。比如下面这个计算阶乘的例子：
+
 ``` clojure
 (defn recur-fac [n]
     (if (= 1 n)
@@ -14,6 +15,7 @@ format: md
         (* n (recur-fac (dec n)))))
 ```
 通常，可以改写成尾递归的方式来避免消耗栈导致栈溢出，改写如下：
+
 ``` clojure
 (defn recur-fac [n]
     (letfn [(fac [c r]
@@ -26,6 +28,7 @@ format: md
 问题是clojure是基于JVM，无法支持完全的TCO，这主要是Java的安全模型决定
 的。还好Clojue也支持同一个函数体直接调用自身的TCO，只是要使用clojure的
 特殊形式，即使用recur关键字。改写如下：
+
 ``` clojure
 (defn recur-fac [n]
     (letfn [(fac [c r]
@@ -37,6 +40,7 @@ format: md
 好了，这样修改后，就不会有栈溢出的危险了。
 上述例子是在同一个函数中进行自身调用，如果要在两个函数中相互调用则需要
 用到trampoline，使用如下：
+
 ``` clojure
 (declare is-odd?)
 (defn is-even? [n]
@@ -50,6 +54,7 @@ format: md
 
 ```
 调用：
+
 ``` bash
 user=> (trampoline is-odd? 10000000)
 false

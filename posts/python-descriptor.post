@@ -6,6 +6,7 @@ format: md
 ;;;;;
 
 在python中一个描述器就是定义下面的方法中一个或多个的一个对象：
+
 ``` python
 __get__(self, instance, owner)
 __set__(self, instance, value)
@@ -23,17 +24,20 @@ __delete__(self, instance)
 描述器的调用规则如下：   
 
 * `__get__(self, instance, owner)`
+
 ``` python
   obj.descriptor         will call descriptor.__get__(obj. OwnerClass)
   OwnerClass.descriptor  will call  descriptor.__get__(None, OwnerClass)
 ```
 
 * `__set__(self, instance, value)`
+
 ``` python
   obj.descriptor = 5     will call  descriptor.__set__(obj, 5)
 ```
 
 * `__delete__(self, instance)`
+
 ``` python
   del obj.descriptor     will call  descriptor.__delete__(obj)
 ```

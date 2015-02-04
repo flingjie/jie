@@ -7,6 +7,7 @@ format: md
 
 ruby中clone和dup都是对一个对象的浅拷贝，其区别如下：   
 1.clone会拷贝单例方法，而dup不会。
+
 ``` ruby
 a = Object.new
 def a.hello

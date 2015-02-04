@@ -6,6 +6,7 @@ format: md
 ;;;;;
 
 ** Append an array to existing Array **
+
 ``` javascript Append an array to existing Array 
 var a = [1,2,3];
 var b = [4,5,6];
@@ -17,6 +18,7 @@ Array.prototype.push.apply(a,b);
 * * * * *
 
 ** Define a function which takes a string as an argument, and return the same string separated by a space **
+
 ``` javascript separated by a space
 function spacify(str){
     return str.split('').join(' ');
@@ -26,6 +28,7 @@ function spacify(str){
 * * * * *  
 
 ** Pass string argument to _console.log()_ **
+
 ``` javascript
 function log(){
     console.log.apply(console, arguments);
@@ -33,6 +36,7 @@ function log(){
 ```
     
 ** Prefix all logged messages with _"(app)"_ **
+
 ``` javascript
 function log(){
     var args = Array.prototype.slice.call(arguments);

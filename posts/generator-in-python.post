@@ -28,6 +28,7 @@ format: md
 **创建生成器**   
 在python可以使用以下方式创建生成器：   
 1.使用yield
+
 ``` python
 def Generator(x,y):
     for i in xrange(x):
@@ -35,6 +36,7 @@ def Generator(x,y):
             yield(i, j)
 ```
 2.使用generator expression
+
 ``` python
 def Generator(x, y):
     return ((i, j) for i in xrange(x) for j in xrange(y))
