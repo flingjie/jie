@@ -4,5 +4,5 @@
   (:url "static")
   (restas.directory-publisher:*directory* *static-directory*))
 
-;; (define-route main ("")
-;;   (format nil "hello"))
+(define-route home ("")
+  "jell")

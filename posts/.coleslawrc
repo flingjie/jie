@@ -1,5 +1,5 @@
 (:author "Jie"
- :deploy-dir "~/quicklisp/local-projects/jie/static"
+ :deploy-dir "~/quicklisp/local-projects/jie/blog"
  :domain "http://127.0.0.1:8000"
  :feeds ("lisp")
  :plugins ((analytics :tracking-code "jie")
