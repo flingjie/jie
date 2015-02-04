@@ -11,24 +11,28 @@ ubuntu12.04 + emacs24 + leiningen2.3.4
 2.**配置emacs**   
   a.添加package地址，在`~/.emacs.d/init.el`中加入：   
 
-    (require 'package)
-    (add-to-list 'package-archives
+``` elisp
+(require 'package)
+(add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-    (package-initialize)
+(package-initialize)
+```
     
   b.安装相关插件，在`~/.emacs.d/init.el`中加入：
 
-    (defvar my-packages '(starter-kit
-                          starter-kit-lisp
-                          starter-kit-bindings
-                          starter-kit-eshell
-                          clojure-mode
-                          clojure-test-mode
-                          cider))
+``` elisp
+(defvar my-packages '(starter-kit
+                      starter-kit-lisp
+                      starter-kit-bindings
+                      starter-kit-eshell
+                      clojure-mode
+                      clojure-test-mode
+                      cider))
 
-    (dolist (p my-packages)
-        (when (not (package-installed-p p))
-            (package-install p)))
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+```
 
 3.**编辑相关操作**   
 a.文件、窗口操作

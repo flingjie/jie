@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom"> <title>Jie&#039;s Blog</title> <link href="http://127.0.0.1:8000/blog"/> <link type="application/atom+xml" rel="self" href="http://127.0.0.1:8000/blog/atom.xml"/> <updated>Wed, 04 Feb 2015 21:25:54 +0800</updated> <author> <name>Jie</name> </author>  </feed>

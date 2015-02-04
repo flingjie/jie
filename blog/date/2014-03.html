@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <title>Jie&#039;s Blog</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link href="http://127.0.0.1:8000/blog/css/bootstrap.min.css" rel="stylesheet" media="screen"> <link href="http://127.0.0.1:8000/blog/css/custom.css" rel="stylesheet" media="screen"> <link rel="alternate" href="http://127.0.0.1:8000/blog/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="container-fluid"> <div class="row-fluid"> <div class="offset2 span8"> <div class="row-fluid"> <div class="navbar navbar-inverse"> <div class="navbar-inner"> <a class="brand" href="http://127.0.0.1:8000/blog">Jie&#039;s Blog</a> <ul class="nav"> <li><a href="http://127.0.0.1:8000">Home</a></li> </ul> </div> </div> </div> <div class="row-fluid"> <h1 class="page-header">Content from 2014-03</h1> <div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/使用Emacs编辑clojure.html">使用Emacs编辑clojure</a></h1> <p class="date-posted">posted on 2014-03-29 10:39:00</p> <p>1.<strong>使用环境</strong>：
+ubuntu12.04 + emacs24 + leiningen2.3.4</p>
+
+<p>2.<strong>配置emacs</strong><br/>
+  a.添加package地址，在<code>~/.emacs.d/init.el</code>中加入：   </p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_201.html#IDX535" class="symbol">require</a> 'package</span>)</span>
+<span class="paren1">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_146.html#IDX439" class="symbol">add-to-list</a> 'package-archives
+             '<span class="paren2">(<span class="code"><span class="string">"marmalade"</span> . <span class="string">"http://marmalade-repo.org/packages/"</span></span>)</span></span>)</span>
+<span class="paren1">(<span class="code">package-initialize</span>)</span></span></code></pre>
+
+<p>b.安装相关插件，在<code>~/.emacs.d/init.el</code>中加入：</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_143.html#IDX430" class="symbol"><i><span class="symbol">defvar</span></i></a> my-packages '<span class="paren2">(<span class="code">starter-kit
+                      starter-kit-lisp
+                      starter-kit-bindings
+                      starter-kit-eshell
+                      clojure-mode
+                      clojure-test-mode
+                      cider</span>)</span></span>)</span>
+
+<span class="paren1">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_128.html#IDX394" class="symbol">dolist</a> <span class="paren2">(<span class="code">p my-packages</span>)</span>
+  <span class="paren2">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_126.html#IDX387" class="symbol">when</a> <span class="paren3">(<span class="code"><a href="http://www.gnu.org/software/emacs/elisp-manual/html_node/elisp_127.html#IDX390" class="symbol">not</a> <span class="paren4">(<span class="code">package-installed-p p</span>)</span></span>)</span>
+    <span class="paren3">(<span class="code">package-install p</span>)</span></span>)</span></span>)</span></span></code></pre>
+
+<p>3.<strong>编辑相关操作</strong><br/>
+a.文件、窗口操作</p>
+
+<pre><code>C-x C-f    打开文件
+C-x C-s    保存文件
+C-x b      切换buffer
+C-x k      关闭当前buffer
+C-x o      切换到下一buffer
+C-x 0      隐藏当前buffer
+C-x 1      隐藏其他buffer
+C-x 2      垂直分割窗口
+C-x 3      水平分割窗口</code></pre>
+
+<p>b.移动操作</p>
+
+<pre><code>C-a    移动到行头
+C-e    移动到行尾
+C-n    移动到下一行
+C-p    移动到上一行
+C-b    向后移动一个字符
+C-f    向前移动一个字符
+M-f    向前移动一个单词
+M-b    向后移动一个单词
+C-v    向下翻页
+M-v    向上翻页
+M-<    移动到buffer开头
+M->    移动到buffer末尾
+C-M-f  移动到后一个括号
+C-M-f  移动到前一个括号</code></pre>
+
+<p>c.编辑操作</p>
+
+<pre><code>C-d        删除一个字符
+M-d        删除一个单词
+C-k        删除一行
+C-w        删除选中区域
+M-w        复制选中区域
+C-y        粘帖
+C-j        换行
+
+C-M-Space  选中光标所在的S表达式
+C-M-t      交换连个S表达式位置
+M-1 (      在当前S表达式外添加一对括号
+M-s        删除当前S表达式外的一对括号
+M-r        删除当前S表达式外的一对括号(包括内容)
+C-)        将后面的括号向后移动一个元素
+           (a b (c d) e f) -> (a b (c d e) f)
+C-}        将后面的括号向前移动一个元素
+           (a b (c d) e f) -> (a b (c) d e f)
+C-(        将前面的括号向前移动一个元素
+C-{        将前面的括号向后移动一个元素
+C-M-q      代码对齐
+</code></pre>
+
+<p>d.帮助操作</p>
+
+<pre><code>C-h b    查看当前的key绑定
+C-h m    查看当前的编辑模式
+C-h a    查找一个关键词的相关帮助
+C-h k    查看一个key的绑定</code></pre>
+
+<p>4.<strong>编译相关操作</strong></p>
+
+<pre><code>C-c M-j    cider-jack-in,启动nREPL
+C-c C-e    执行s表达式
+C-c C-r    执行当前选中区
+C-c C-z    运行lisp进程</code></pre>
+
+<p>5.<strong>宏操作</strong></p>
+
+<pre><code>C-x (   ;;开始录制宏
+...     ;;输入操作
+C-x )   ;;结束录制
+C-x e   ;;执行宏</code></pre>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/clojure中的函数递归.html">clojure中的函数递归</a></h1> <p class="date-posted">posted on 2014-03-18 21:23:52</p> <p>一般函数可以通过调用自身来实现递归的效果，但这种方式会消耗栈有导致栈
+溢出。比如下面这个计算阶乘的例子：</p>
+
+<pre><code>(defn recur-fac [n]
+    (if (= 1 n)
+        1
+        (* n (recur-fac (dec n)))))</code></pre>
+
+<p>通常，可以改写成尾递归的方式来避免消耗栈导致栈溢出，改写如下：</p>
+
+<pre><code>(defn recur-fac [n]
+    (letfn [(fac [c r]
+                (if (= 0 c)
+                    r
+                    (fac (dec c) (* c r))))]
+    (fac n 1)))</code></pre>
+
+<p>上面的写法使用了尾递归，在common lisp的语言中可以达到尾递归优化(TCO)，
+问题是clojure是基于JVM，无法支持完全的TCO，这主要是Java的安全模型决定
+的。还好Clojue也支持同一个函数体直接调用自身的TCO，只是要使用clojure的
+特殊形式，即使用recur关键字。改写如下：</p>
+
+<pre><code>(defn recur-fac [n]
+    (letfn [(fac [c r]
+                (if (= 0 c)
+                    r
+                    (recur (dec c) (* c r))))]
+    (fac n 1)))</code></pre>
+
+<p>好了，这样修改后，就不会有栈溢出的危险了。
+上述例子是在同一个函数中进行自身调用，如果要在两个函数中相互调用则需要
+用到trampoline，使用如下：</p>
+
+<pre><code>(declare is-odd?)
+(defn is-even? [n]
+    (if (= n 0)
+        true
+        #(is-odd? (dec n))))
+(defn is-odd? [n]
+    (if (= n 0)
+        false
+        #(is-even? (dec n))))
+</code></pre>
+
+<p>调用：</p>
+
+<pre><code>user=> (trampoline is-odd? 10000000)
+false
+user=> (trampoline is-even? 10000)  
+true</code></pre>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/Description-in-Python.html">Description in Python</a></h1> <p class="date-posted">posted on 2014-03-15 16:27:32</p> <p>在python中一个描述器就是定义下面的方法中一个或多个的一个对象：</p>
+
+<pre><code><span class="code">__get__<span class="paren1">(<span class="code">self, instance, owner</span>)</span>
+__set__<span class="paren1">(<span class="code">self, instance, value</span>)</span>
+__delete__<span class="paren1">(<span class="code">self, instance</span>)</span>
+</span></code></pre>
+
+<p>如果一个对象同时定义了<code>__get__()</code>和<code>__set__()</code>，它叫做资料描述器。只定义了<code>__get__()</code>的描述器叫做非资料描述器(一般用于方法)。
+资料描述器和非资料描述器的区别在于：相对于实例字典的优先级。如果实例字典中有与资料描述器同名的属性，优先使用资料描述器中的；如果实例字典中有与非资料描述器中同名的属性，优先使用实例字典中的。即优先级 资料描述器 &gt; 实例字典 &gt; 非资料描述器。<br/>
+要想写一个只读的资料描述器，只需同时定义<code>__get__()</code>和<code>__set__()</code>并在<code>__set__()</code>中抛出一个<code>AttributeError</code>。</p>
+
+<p><strong>描述器的调用</strong><br/>
+描述器可以直接这么调用：<code>descriptor.__get__(obj)</code>，不过一般都是用来拦截对实例属性的访问。<br/>
+描述器的调用规则如下：   </p>
+
+<ul>
+<li><code>__get__(self, instance, owner)</code></li>
+</ul>
+
+<pre><code><span class="code">  obj.descriptor         will call descriptor.__get__<span class="paren1">(<span class="code">obj. OwnerClass</span>)</span>
+  OwnerClass.descriptor  will call  descriptor.__get__<span class="paren1">(<span class="code">None, OwnerClass</span>)</span></span></code></pre>
+
+<ul>
+<li><code>__set__(self, instance, value)</code></li>
+</ul>
+
+<pre><code><span class="code">  obj.descriptor = 5     will call  descriptor.__set__<span class="paren1">(<span class="code">obj, 5</span>)</span></span></code></pre>
+
+<ul>
+<li><code>__delete__(self, instance)</code></li>
+</ul>
+
+<pre><code><span class="code">  <span class="symbol">del</span> obj.descriptor     will call  descriptor.__delete__<span class="paren1">(<span class="code">obj</span>)</span></span></code></pre>
+
+<p><em>参考资料：</em><br/>
+<a href="http://openhome.cc/Gossip/Python/Descriptor.html" >Python Gossip: 描述器</a><br/>
+<a href="https://pyzh.readthedocs.org/en/latest/Descriptor-HOW-TO-Guide.html" >Python描述器引导</a><br/>
+<a href="http://docs.python.org/2/howto/descriptor.html" >Descriptor HowTo Guide</a><br/>
+<a href="http://me.veekun.com/blog/2012/05/23/python-faq-descriptors/" >Python descriptor</a><br/>
+<a href="http://me.veekun.com/blog/2012/05/23/python-faq-descriptors/" >Python FAQ: Descriptors</a>   </p>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/Context-manager-in-Python.html">Context manager in Python</a></h1> <p class="date-posted">posted on 2014-03-14 17:13:46</p> <p>上下文管理器(context manager)是Python2.5开始支持的一种语法，用于处理指
+定代码块进入和退出时的操作。一般使用with语法，也可以直接调用相应的方法。</p>
+
+<p><strong>with语句</strong><br/>
+with语句是用来简化“try/finally”语句的，通常用于处理共享资源的获取和
+释放，比如文件、数据库和线程资源。它的用法如下：</p>
+
+<pre><code><span class="code">with VAR = EXPR:
+    BLOCK</span></code></pre>
+
+<p>其相当于进行了如下操作：</p>
+
+<pre><code><span class="code">VAR = EXPR
+VAR.__enter__<span class="paren1">(<span class="code"></span>)</span>
+try:
+    BLOCK
+finally:
+    VAR.__exit__<span class="paren1">(<span class="code"></span>)</span></span></code></pre>
+
+<p>例子如下：</p>
+
+<pre><code><span class="code"><span class="symbol">import</span> time
+<span class="special">class</span><span
+class="keyword"> demo</span>:
+    <span class="special">def</span><span
+class="keyword"> __init__</span><span class="paren1">(<span class="code">self,label</span>)</span>:
+        self.label = label
+
+    <span class="special">def</span><span
+class="keyword"> __enter__</span><span class="paren1">(<span class="code">self</span>)</span>:
+        self.start = time.time<span class="paren1">(<span class="code"></span>)</span>
+
+    <span class="special">def</span><span
+class="keyword"> __exit__</span><span class="paren1">(<span class="code">self, exc_ty, exc_val, exc_tb</span>)</span>:
+        end = time.time<span class="paren1">(<span class="code"></span>)</span>
+        <span class="symbol">print</span> <span class="paren1">(<span class="code"><span class="string">'{}: {}'</span>.format<span class="paren2">(<span class="code">self.label, end - self.start</span>)</span></span>)</span>
+
+with demo<span class="paren1">(<span class="code"><span class="string">'counting'</span></span>)</span>:
+    n = 10000000
+    <span class="symbol">while</span> n &gt; 0:
+        n -= 1;
+
+<span class="comment">#  counting: 0.933553934097
+</span></span></code></pre>
+
+<p>也可利用@contextmanager装饰器改写如下:</p>
+
+<pre><code><span class="code"><span class="symbol">from</span> contextlib <span class="symbol">import</span> contextmanager
+<span class="symbol">import</span> time
+
+<span class="symbol">@contextmanager</span>
+<span class="special">def</span><span
+class="keyword"> demo</span><span class="paren1">(<span class="code">label</span>)</span>:
+    start = time.time<span class="paren1">(<span class="code"></span>)</span>
+    try:
+        <span class="symbol">yield</span>
+    finally:
+        end = time.time<span class="paren1">(<span class="code"></span>)</span>
+        <span class="symbol">print</span><span class="paren1">(<span class="code"><span class="string">'{}: {}'</span>.format<span class="paren2">(<span class="code">label, end - start</span>)</span></span>)</span>
+
+with demo<span class="paren1">(<span class="code"><span class="string">'counting'</span></span>)</span>:
+    n = 10000000
+    <span class="symbol">while</span> n &gt; 0:
+        n -= 1
+<span class="comment"># counting: 0.947228908539
+</span>
+<span class="comment"># 其中yield之前的所有代码都类似于__enter__方法的内容。而yield之后的所有
+</span><span class="comment"># 代码类似__exit__方法的内容。</span></span></code></pre>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/Decrorator-in-Python.html">Decrorator in Python</a></h1> <p class="date-posted">posted on 2014-03-14 15:00:56</p> <p>装饰器的作用是在原有对象的基础上添加额外功能。python中可以将函数作为参
+数，进行装饰，返回经过修饰过的函数，比如：</p>
+
+<pre><code><span class="code"><span class="special">def</span><span
+class="keyword"> decorator</span><span class="paren1">(<span class="code">fn</span>)</span>:
+    <span class="special">def</span><span
+class="keyword"> wrapper</span><span class="paren1">(<span class="code"></span>)</span>:
+        <span class="symbol">print</span> <span class="string">"*** wrapper ***"</span>
+        fn<span class="paren1">(<span class="code"></span>)</span>
+        <span class="symbol">print</span> <span class="string">"*** wrapper ***"</span>
+    <span class="symbol">return</span> wrapper
+
+<span class="special">def</span><span
+class="keyword"> origin_fn</span><span class="paren1">(<span class="code"></span>)</span>:
+    <span class="symbol">print</span> <span class="string">"--- origin ---"</span>
+
+decorated_fn = decorator<span class="paren1">(<span class="code">origin_fn</span>)</span>
+
+decorated_fn<span class="paren1">(<span class="code"></span>)</span>
+        </span></code></pre>
+
+<p>python可以使用语法糖@来达到相同的作用，例子如下：</p>
+
+<pre><code><span class="code"><span class="special">def</span><span
+class="keyword"> makebold</span><span class="paren1">(<span class="code">fn</span>)</span>:
+    <span class="special">def</span><span
+class="keyword"> wrapper</span><span class="paren1">(<span class="code"></span>)</span>:
+        <span class="symbol">return</span> <span class="string">"&lt;b&gt;"</span> + fn<span class="paren1">(<span class="code"></span>)</span> + <span class="string">"&lt;/b&gt;"</span>
+    <span class="symbol">return</span> wrapper
+
+<span class="special">def</span><span
+class="keyword"> makeitalic</span><span class="paren1">(<span class="code">fn</span>)</span>:
+    <span class="special">def</span><span
+class="keyword"> wrapper</span><span class="paren1">(<span class="code"></span>)</span>:
+        <span class="symbol">return</span> <span class="string">"&lt;i&gt;"</span> + fn<span class="paren1">(<span class="code"></span>)</span> + <span class="string">"&lt;/i&gt;"</span>
+    <span class="symbol">return</span> wrapper
+
+<span class="symbol">@makebold</span>
+<span class="symbol">@makeitalic</span>
+<span class="special">def</span><span
+class="keyword"> helloworld</span><span class="paren1">(<span class="code"></span>)</span>:
+    <span class="symbol">return</span> <span class="string">"hello world"</span>
+
+<span class="symbol">print</span> helloworld<span class="paren1">(<span class="code"></span>)</span>
+<span class="comment">## return &lt;b&gt;&lt;i&gt;helloworld&lt;/i&gt;&lt;/b&gt;</span></span></code></pre>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/Generator-in-Python.html">Generator in Python</a></h1> <p class="date-posted">posted on 2014-03-14 11:52:54</p> <p>生成器是可以当作iterator使用的特殊函数。它有以下优点：<br/>
+1. 惰性求值；<br/>
+2. 在处理大的列表时不需要一次性加载全部数据，可以减小内存使用；<br/>
+除非特殊的原因，应该在代码中使用生成器。</p>
+
+<p><strong>生成器(generator) vs 函数(function)</strong><br/>
+生成器和函数的主要区别在于函数return a value, 生成器yield a value同时
+记录以便在下次调用时从上次的状态下恢复执行。</p>
+
+<p><strong>生成器(generator) vs 迭代器(iterator)</strong><br/>
+ * 迭代器是一个更一般的概念，它是一个有next方法和返回self的__iter__方
+法的类。<br/>
+ * 每个生成器是一个迭代器，但迭代器不一定是生成器，生成器是有记录上次
+ 执行状态的迭代器。从这点上看生成器有点像闭包，只是它记录的不是数据
+ 的状态，记录的是执行过程中的状态。</p>
+
+<p><strong>生成器(generator) vs 续延(coninuations)</strong>
+与生成器相比，续延更加灵活，续延允许你调用不同状态的执行过程，而不像生
+成器这样直接返回。</p>
+
+<p><strong>创建生成器</strong><br/>
+在python可以使用以下方式创建生成器：<br/>
+1.使用yield</p>
+
+<pre><code><span class="code"><span class="special">def</span><span
+class="keyword"> Generator</span><span class="paren1">(<span class="code">x,y</span>)</span>:
+    <span class="symbol">for</span> i <span class="symbol">in</span> xrange<span class="paren1">(<span class="code">x</span>)</span>:
+        <span class="symbol">for</span> j <span class="symbol">in</span> xrange<span class="paren1">(<span class="code">y</span>)</span>:
+            <span class="symbol">yield</span><span class="paren1">(<span class="code">i, j</span>)</span></span></code></pre>
+
+<p>2.使用generator expression</p>
+
+<pre><code><span class="code"><span class="special">def</span><span
+class="keyword"> Generator</span><span class="paren1">(<span class="code">x, y</span>)</span>:
+    <span class="symbol">return</span> <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">i, j</span>)</span> <span class="symbol">for</span> i <span class="symbol">in</span> xrange<span class="paren2">(<span class="code">x</span>)</span> <span class="symbol">for</span> j <span class="symbol">in</span> xrange<span class="paren2">(<span class="code">y</span>)</span></span>)</span></span></code></pre>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/clone-and-dup-in-Ruby.html">clone and dup in Ruby</a></h1> <p class="date-posted">posted on 2014-03-12 15:04:59</p> <p>ruby中clone和dup都是对一个对象的浅拷贝，其区别如下：<br/>
+1.clone会拷贝单例方法，而dup不会。</p>
+
+<pre><code>a = Object.new
+def a.hello
+    "hello"
+end
+
+a.dup.hello   # raises NoMethodError
+a.clone.hello # return "hello"</code></pre>
+
+<p>2.dup不能对frozen状态的对象进行拷贝，而clone可以。</p>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/ruby-variables.html">ruby variables</a></h1> <p class="date-posted">posted on 2014-03-12 11:26:35</p> <p>ruby变量类型有其首位字符来决定，分类如下：<br/>
+$      全局变量<br/>
+@      实例变量<br/>
+@@     类变量，在module中定义的模块变量可被所有包含该module的类所访问<br/>
+[a-z]  局部变量<br/>
+[A-Z]  常量<br/>
+self   伪变量，永远指向当前正执行着的对象或未初始化变量的空值nil  </p>
+ </div><div class="row-fluid"> <h1><a href="http://127.0.0.1:8000/blog/posts/Javascript-Tips.html">Javascript Tips</a></h1> <p class="date-posted">posted on 2014-03-09 10:04:47</p> <p><em>* Append an array to existing Array *</em></p>
+
+<pre><code>var a = [1,2,3];
+var b = [4,5,6];
+Array.prototype.push.apply(a,b);
+// a contains [1,2,3,4,5,6]</code></pre>
+
+<p>And use concat() method for the same but cancat() creates new array while Array Prototype push append to existing array itself.</p>
+
+<hr/>
+
+<p><em>* Define a function which takes a string as an argument, and return the same string separated by a space *</em></p>
+
+<pre><code>function spacify(str){
+    return str.split('').join(' ');
+}</code></pre>
+
+<hr/>
+
+<p><em>* Pass string argument to <em>console.log()</em> *</em></p>
+
+<pre><code>function log(){
+    console.log.apply(console, arguments);
+}</code></pre>
+
+<p><em>* Prefix all logged messages with <em>&quot;(app)&quot;</em> *</em></p>
+
+<pre><code>function log(){
+    var args = Array.prototype.slice.call(arguments);
+    args.unshift('(app)');
+        
+    console.log.apply(console, args);
+}</code></pre>
+ </div> <div id="relative-nav"> <ul class="pager">   </ul> </div> <div class="row-fluid"> <p>This blog covers <a href="http://127.0.0.1:8000/blog/tag/website.html">website</a>, <a href="http://127.0.0.1:8000/blog/tag/visualize.html">visualize</a>, <a href="http://127.0.0.1:8000/blog/tag/vim.html">vim</a>, <a href="http://127.0.0.1:8000/blog/tag/tools.html">tools</a>, <a href="http://127.0.0.1:8000/blog/tag/ruby.html">ruby</a>, <a href="http://127.0.0.1:8000/blog/tag/rails.html">rails</a>, <a href="http://127.0.0.1:8000/blog/tag/python.html">python</a>, <a href="http://127.0.0.1:8000/blog/tag/mindmap.html">mindmap</a>, <a href="http://127.0.0.1:8000/blog/tag/learning.html">learning</a>, <a href="http://127.0.0.1:8000/blog/tag/javascript.html">javascript</a>, <a href="http://127.0.0.1:8000/blog/tag/emacs.html">emacs</a>, <a href="http://127.0.0.1:8000/blog/tag/clojure.html">clojure</a>, <a href="http://127.0.0.1:8000/blog/tag/algorithm.html">algorithm</a>, <a href="http://127.0.0.1:8000/blog/tag/a.html">a*</a> </p> </div> <div class="row-fluid"> <p>View content from <a href="http://127.0.0.1:8000/blog/date/2014-03.html">2014-03</a>, <a href="http://127.0.0.1:8000/blog/date/2014-04.html">2014-04</a>, <a href="http://127.0.0.1:8000/blog/date/2014-05.html">2014-05</a> </p> </div> </div>  <div class="row-fluid"> <hr> <p class="fineprint">Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/blog/img/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/blog/img/logo_small.jpg" alt="Coleslaw logo" /></p> </a> </div> </div> </div> </div> <script src="http://127.0.0.1:8000/blog/js/bootstrap.min.js"></script> </body> </html>

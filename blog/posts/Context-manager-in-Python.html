@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <title>Jie&#039;s Blog</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link href="http://127.0.0.1:8000/blog/css/bootstrap.min.css" rel="stylesheet" media="screen"> <link href="http://127.0.0.1:8000/blog/css/custom.css" rel="stylesheet" media="screen"> <link rel="alternate" href="http://127.0.0.1:8000/blog/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="container-fluid"> <div class="row-fluid"> <div class="offset2 span8"> <div class="row-fluid"> <div class="navbar navbar-inverse"> <div class="navbar-inner"> <a class="brand" href="http://127.0.0.1:8000/blog">Jie&#039;s Blog</a> <ul class="nav"> <li><a href="http://127.0.0.1:8000">Home</a></li> </ul> </div> </div> </div> <div class="row-fluid"> <div class="row-fluid">
+<h1 class="page-header">Context manager in Python</h1>
+<p> Tagged as <a href="http://127.0.0.1:8000/blog/tag/python.html">python</a> </p> <p class="date-posted"> Written on 2014-03-14 17:13:46 </p> <p>上下文管理器(context manager)是Python2.5开始支持的一种语法，用于处理指
+定代码块进入和退出时的操作。一般使用with语法，也可以直接调用相应的方法。</p>
+
+<p><strong>with语句</strong><br/>
+with语句是用来简化“try/finally”语句的，通常用于处理共享资源的获取和
+释放，比如文件、数据库和线程资源。它的用法如下：</p>
+
+<pre><code><span class="code">with VAR = EXPR:
+    BLOCK</span></code></pre>
+
+<p>其相当于进行了如下操作：</p>
+
+<pre><code><span class="code">VAR = EXPR
+VAR.__enter__<span class="paren1">(<span class="code"></span>)</span>
+try:
+    BLOCK
+finally:
+    VAR.__exit__<span class="paren1">(<span class="code"></span>)</span></span></code></pre>
+
+<p>例子如下：</p>
+
+<pre><code><span class="code"><span class="symbol">import</span> time
+<span class="special">class</span><span
+class="keyword"> demo</span>:
+    <span class="special">def</span><span
+class="keyword"> __init__</span><span class="paren1">(<span class="code">self,label</span>)</span>:
+        self.label = label
+
+    <span class="special">def</span><span
+class="keyword"> __enter__</span><span class="paren1">(<span class="code">self</span>)</span>:
+        self.start = time.time<span class="paren1">(<span class="code"></span>)</span>
+
+    <span class="special">def</span><span
+class="keyword"> __exit__</span><span class="paren1">(<span class="code">self, exc_ty, exc_val, exc_tb</span>)</span>:
+        end = time.time<span class="paren1">(<span class="code"></span>)</span>
+        <span class="symbol">print</span> <span class="paren1">(<span class="code"><span class="string">'{}: {}'</span>.format<span class="paren2">(<span class="code">self.label, end - self.start</span>)</span></span>)</span>
+
+with demo<span class="paren1">(<span class="code"><span class="string">'counting'</span></span>)</span>:
+    n = 10000000
+    <span class="symbol">while</span> n &gt; 0:
+        n -= 1;
+
+<span class="comment">#  counting: 0.933553934097
+</span></span></code></pre>
+
+<p>也可利用@contextmanager装饰器改写如下:</p>
+
+<pre><code><span class="code"><span class="symbol">from</span> contextlib <span class="symbol">import</span> contextmanager
+<span class="symbol">import</span> time
+
+<span class="symbol">@contextmanager</span>
+<span class="special">def</span><span
+class="keyword"> demo</span><span class="paren1">(<span class="code">label</span>)</span>:
+    start = time.time<span class="paren1">(<span class="code"></span>)</span>
+    try:
+        <span class="symbol">yield</span>
+    finally:
+        end = time.time<span class="paren1">(<span class="code"></span>)</span>
+        <span class="symbol">print</span><span class="paren1">(<span class="code"><span class="string">'{}: {}'</span>.format<span class="paren2">(<span class="code">label, end - start</span>)</span></span>)</span>
+
+with demo<span class="paren1">(<span class="code"><span class="string">'counting'</span></span>)</span>:
+    n = 10000000
+    <span class="symbol">while</span> n &gt; 0:
+        n -= 1
+<span class="comment"># counting: 0.947228908539
+</span>
+<span class="comment"># 其中yield之前的所有代码都类似于__enter__方法的内容。而yield之后的所有
+</span><span class="comment"># 代码类似__exit__方法的内容。</span></span></code></pre>
+ <ul class="pager"> <li class="previous"><a href="http://127.0.0.1:8000/blog/posts/Decrorator-in-Python.html">&larr; Previous</a></li>
+<li class="next"><a href="http://127.0.0.1:8000/blog/posts/Description-in-Python.html">Next &rarr;</a></li>
+</ul> </div>
+ </div>  <div class="row-fluid"> <hr> <p class="fineprint">Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/blog/img/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/blog/img/logo_small.jpg" alt="Coleslaw logo" /></p> </a> </div> </div> </div> </div> <script src="http://127.0.0.1:8000/blog/js/bootstrap.min.js"></script> </body> </html>

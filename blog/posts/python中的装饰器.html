@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <title>Jie&#039;s Blog</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link href="http://127.0.0.1:8000/blog/css/bootstrap.min.css" rel="stylesheet" media="screen"> <link href="http://127.0.0.1:8000/blog/css/custom.css" rel="stylesheet" media="screen"> <link rel="alternate" href="http://127.0.0.1:8000/blog/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="container-fluid"> <div class="row-fluid"> <div class="offset2 span8"> <div class="row-fluid"> <div class="navbar navbar-inverse"> <div class="navbar-inner"> <a class="brand" href="http://127.0.0.1:8000/blog">Jie&#039;s Blog</a> <ul class="nav"> <li><a href="http://127.0.0.1:8000">Home</a></li> </ul> </div> </div> </div> <div class="row-fluid"> <div class="row-fluid">
+<h1 class="page-header">python中的装饰器</h1>
+<p> Tagged as <a href="http://127.0.0.1:8000/blog/tag/python.html">python</a> </p> <p class="date-posted"> Written on 2014-03-14 15:00:56 </p> <p>装饰器的作用是在原有对象的基础上添加额外功能。python中可以将函数作为参
+数，进行装饰，返回经过修饰过的函数，比如：</p>
+
+<pre><code><span class="code"><span class="special">def</span><span
+class="keyword"> decorator</span><span class="paren1">(<span class="code">fn</span>)</span>:
+    <span class="special">def</span><span
+class="keyword"> wrapper</span><span class="paren1">(<span class="code"></span>)</span>:
+        <span class="symbol">print</span> <span class="string">"*** wrapper ***"</span>
+        fn<span class="paren1">(<span class="code"></span>)</span>
+        <span class="symbol">print</span> <span class="string">"*** wrapper ***"</span>
+    <span class="symbol">return</span> wrapper
+
+<span class="special">def</span><span
+class="keyword"> origin_fn</span><span class="paren1">(<span class="code"></span>)</span>:
+    <span class="symbol">print</span> <span class="string">"--- origin ---"</span>
+
+decorated_fn = decorator<span class="paren1">(<span class="code">origin_fn</span>)</span>
+
+decorated_fn<span class="paren1">(<span class="code"></span>)</span>
+        </span></code></pre>
+
+<p>python可以使用语法糖@来达到相同的作用，例子如下：</p>
+
+<pre><code><span class="code"><span class="special">def</span><span
+class="keyword"> makebold</span><span class="paren1">(<span class="code">fn</span>)</span>:
+    <span class="special">def</span><span
+class="keyword"> wrapper</span><span class="paren1">(<span class="code"></span>)</span>:
+        <span class="symbol">return</span> <span class="string">"&lt;b&gt;"</span> + fn<span class="paren1">(<span class="code"></span>)</span> + <span class="string">"&lt;/b&gt;"</span>
+    <span class="symbol">return</span> wrapper
+
+<span class="special">def</span><span
+class="keyword"> makeitalic</span><span class="paren1">(<span class="code">fn</span>)</span>:
+    <span class="special">def</span><span
+class="keyword"> wrapper</span><span class="paren1">(<span class="code"></span>)</span>:
+        <span class="symbol">return</span> <span class="string">"&lt;i&gt;"</span> + fn<span class="paren1">(<span class="code"></span>)</span> + <span class="string">"&lt;/i&gt;"</span>
+    <span class="symbol">return</span> wrapper
+
+<span class="symbol">@makebold</span>
+<span class="symbol">@makeitalic</span>
+<span class="special">def</span><span
+class="keyword"> helloworld</span><span class="paren1">(<span class="code"></span>)</span>:
+    <span class="symbol">return</span> <span class="string">"hello world"</span>
+
+<span class="symbol">print</span> helloworld<span class="paren1">(<span class="code"></span>)</span>
+<span class="comment">## return &lt;b&gt;&lt;i&gt;helloworld&lt;/i&gt;&lt;/b&gt;</span></span></code></pre>
+ <ul class="pager"> <li class="previous"><a href="http://127.0.0.1:8000/blog/posts/python中的生成器.html">&larr; Previous</a></li>
+<li class="next"><a href="http://127.0.0.1:8000/blog/posts/python中的上下文管理器.html">Next &rarr;</a></li>
+</ul> </div>
+ </div> <div class="row-fluid"> <div id="disqus_thread"></div>
+     <script type="text/javascript">
+       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+       var disqus_shortname = 'Jie's Blog';
+       /* * * DON'T EDIT BELOW THIS LINE * * */
+       (function() {
+         var dsq = document.createElement('script');
+         dsq.type = 'text/javascript';
+         dsq.async = true;
+         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+           })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a> </div> <div class="row-fluid"> <hr> <p class="fineprint">Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/blog/img/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/blog/img/logo_small.jpg" alt="Coleslaw logo" /></p> </a> </div> </div> </div> </div> <script src="http://127.0.0.1:8000/blog/js/bootstrap.min.js"></script> </body> </html>

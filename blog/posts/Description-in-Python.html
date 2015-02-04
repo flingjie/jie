@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <title>Jie&#039;s Blog</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link href="http://127.0.0.1:8000/blog/css/bootstrap.min.css" rel="stylesheet" media="screen"> <link href="http://127.0.0.1:8000/blog/css/custom.css" rel="stylesheet" media="screen"> <link rel="alternate" href="http://127.0.0.1:8000/blog/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="container-fluid"> <div class="row-fluid"> <div class="offset2 span8"> <div class="row-fluid"> <div class="navbar navbar-inverse"> <div class="navbar-inner"> <a class="brand" href="http://127.0.0.1:8000/blog">Jie&#039;s Blog</a> <ul class="nav"> <li><a href="http://127.0.0.1:8000">Home</a></li> </ul> </div> </div> </div> <div class="row-fluid"> <div class="row-fluid">
+<h1 class="page-header">Description in Python</h1>
+<p> Tagged as <a href="http://127.0.0.1:8000/blog/tag/python.html">python</a> </p> <p class="date-posted"> Written on 2014-03-15 16:27:32 </p> <p>在python中一个描述器就是定义下面的方法中一个或多个的一个对象：</p>
+
+<pre><code><span class="code">__get__<span class="paren1">(<span class="code">self, instance, owner</span>)</span>
+__set__<span class="paren1">(<span class="code">self, instance, value</span>)</span>
+__delete__<span class="paren1">(<span class="code">self, instance</span>)</span>
+</span></code></pre>
+
+<p>如果一个对象同时定义了<code>__get__()</code>和<code>__set__()</code>，它叫做资料描述器。只定义了<code>__get__()</code>的描述器叫做非资料描述器(一般用于方法)。
+资料描述器和非资料描述器的区别在于：相对于实例字典的优先级。如果实例字典中有与资料描述器同名的属性，优先使用资料描述器中的；如果实例字典中有与非资料描述器中同名的属性，优先使用实例字典中的。即优先级 资料描述器 &gt; 实例字典 &gt; 非资料描述器。<br/>
+要想写一个只读的资料描述器，只需同时定义<code>__get__()</code>和<code>__set__()</code>并在<code>__set__()</code>中抛出一个<code>AttributeError</code>。</p>
+
+<p><strong>描述器的调用</strong><br/>
+描述器可以直接这么调用：<code>descriptor.__get__(obj)</code>，不过一般都是用来拦截对实例属性的访问。<br/>
+描述器的调用规则如下：   </p>
+
+<ul>
+<li><code>__get__(self, instance, owner)</code></li>
+</ul>
+
+<pre><code><span class="code">  obj.descriptor         will call descriptor.__get__<span class="paren1">(<span class="code">obj. OwnerClass</span>)</span>
+  OwnerClass.descriptor  will call  descriptor.__get__<span class="paren1">(<span class="code">None, OwnerClass</span>)</span></span></code></pre>
+
+<ul>
+<li><code>__set__(self, instance, value)</code></li>
+</ul>
+
+<pre><code><span class="code">  obj.descriptor = 5     will call  descriptor.__set__<span class="paren1">(<span class="code">obj, 5</span>)</span></span></code></pre>
+
+<ul>
+<li><code>__delete__(self, instance)</code></li>
+</ul>
+
+<pre><code><span class="code">  <span class="symbol">del</span> obj.descriptor     will call  descriptor.__delete__<span class="paren1">(<span class="code">obj</span>)</span></span></code></pre>
+
+<p><em>参考资料：</em><br/>
+<a href="http://openhome.cc/Gossip/Python/Descriptor.html" >Python Gossip: 描述器</a><br/>
+<a href="https://pyzh.readthedocs.org/en/latest/Descriptor-HOW-TO-Guide.html" >Python描述器引导</a><br/>
+<a href="http://docs.python.org/2/howto/descriptor.html" >Descriptor HowTo Guide</a><br/>
+<a href="http://me.veekun.com/blog/2012/05/23/python-faq-descriptors/" >Python descriptor</a><br/>
+<a href="http://me.veekun.com/blog/2012/05/23/python-faq-descriptors/" >Python FAQ: Descriptors</a>   </p>
+ <ul class="pager"> <li class="previous"><a href="http://127.0.0.1:8000/blog/posts/Context-manager-in-Python.html">&larr; Previous</a></li>
+<li class="next"><a href="http://127.0.0.1:8000/blog/posts/clojure中的函数递归.html">Next &rarr;</a></li>
+</ul> </div>
+ </div>  <div class="row-fluid"> <hr> <p class="fineprint">Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/blog/img/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/blog/img/logo_small.jpg" alt="Coleslaw logo" /></p> </a> </div> </div> </div> </div> <script src="http://127.0.0.1:8000/blog/js/bootstrap.min.js"></script> </body> </html>

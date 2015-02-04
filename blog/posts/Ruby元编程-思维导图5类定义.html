@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <title>Jie&#039;s Blog</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link href="http://127.0.0.1:8000/blog/css/bootstrap.min.css" rel="stylesheet" media="screen"> <link href="http://127.0.0.1:8000/blog/css/custom.css" rel="stylesheet" media="screen"> <link rel="alternate" href="http://127.0.0.1:8000/blog/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="container-fluid"> <div class="row-fluid"> <div class="offset2 span8"> <div class="row-fluid"> <div class="navbar navbar-inverse"> <div class="navbar-inner"> <a class="brand" href="http://127.0.0.1:8000/blog">Jie&#039;s Blog</a> <ul class="nav"> <li><a href="http://127.0.0.1:8000">Home</a></li> </ul> </div> </div> </div> <div class="row-fluid"> <div class="row-fluid">
+<h1 class="page-header">Ruby元编程 思维导图5(类定义)</h1>
+<p> Tagged as <a href="http://127.0.0.1:8000/blog/tag/ruby.html">ruby</a>, <a href="http://127.0.0.1:8000/blog/tag/mindmap.html">mindmap</a> </p> <p class="date-posted"> Written on 2014-05-03 17:51:04 </p> <p>在Ruby中，使用class定义类时，实际上是在运行代码，这与java之类的静态语
+言有很大的差别。<br/>
+另外，类只是一个增强的模块，因此，任何适用于类的东西也
+适用于模块。
+<br>
+{% img /static/img/ObjectDefinitions.png %}
+<br>
+ * 注1:在类(或模块)定义时，类本身充当了当前对象self的角色。</p>
+
+<pre><code>result = class MyClass
+  self
+end
+
+result     # =>  MyClass</code></pre>
+
+<ul>
+<li><p>注2:Ruby中总是存在一个当前对象self，与此类似，也总是存在一个当前类
+   （或模块）。每当通过class关键字来打开一个类时，这个类就成为当前类，
+   但是使用class关键字需要一个类的名字。
+   如果只有一个类的引用，需要用class_eval()方法打开这个类。</p></li>
+<li><p>注3：类实例变量仅仅是属于Class类对象的普通实例变量。它仅仅可以被类
+   本身所访问，而不能被类的实例或之类所访问。</p></li>
+<li><p>注4：类方法的实质，它们只是一个类的单件方法。</p></li>
+<li><p>注5: 在类定义中使用一个类方法。</p></li>
+<li><p>注6: eigenclass是一个对象特有的隐藏类，它是单件方法存在的地方。Ruby中可以使用如下语法进入eigenclass的作用域。</p></li>
+</ul>
+
+<pre><code>class << an_object 
+  # do something
+end</code></pre>
+
+<ul>
+<li><p>注7: 如果对象是eigenclass，那么Ruby不是从它所在的类开始，而是从这个
+   eigenclass类中开始查找方法，如图。
+   <br>
+   {% img /static/img/eigenclassMethod.png %}</p></li>
+<li><p>注8: 一个对象的eigenclass的超类是这个对象的类，一个类的eigenclass的
+   超类是这个类的超类的eigenclass,如图。
+   {% img /static/img/eigenclassInherit.png %}</p></li>
+<li><p>注9: 通过向类的eigenclass中混入模块来定义类方法。</p></li>
+<li><p>注10: 通过给一个对象的eigenclass混入模块来定义单件方法。</p></li>
+<li><p>注11: 1. 给方法定义一个别名；2.重新定义这个方法；3.在新的方法中调用老的方法。</p></li>
+<li><p>注12: 1.环绕别名是一种猴子补丁，可能会破坏已有代码。2.你永远不该把一个环绕别名加载两次。</p></li>
+</ul>
+ <ul class="pager"> <li class="previous"><a href="http://127.0.0.1:8000/blog/posts/Ruby元编程-思维导图4代码块.html">&larr; Previous</a></li>
+<li class="next"><a href="http://127.0.0.1:8000/blog/posts/Ruby元编程-思维导图6编写代码的代码.html">Next &rarr;</a></li>
+</ul> </div>
+ </div> <div class="row-fluid"> <div id="disqus_thread"></div>
+     <script type="text/javascript">
+       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+       var disqus_shortname = 'Jie's Blog';
+       /* * * DON'T EDIT BELOW THIS LINE * * */
+       (function() {
+         var dsq = document.createElement('script');
+         dsq.type = 'text/javascript';
+         dsq.async = true;
+         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+           })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a> </div> <div class="row-fluid"> <hr> <p class="fineprint">Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/blog/img/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/blog/img/logo_small.jpg" alt="Coleslaw logo" /></p> </a> </div> </div> </div> </div> <script src="http://127.0.0.1:8000/blog/js/bootstrap.min.js"></script> </body> </html>

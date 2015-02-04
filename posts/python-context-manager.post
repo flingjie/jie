@@ -1,5 +1,5 @@
 ;;;;;
-title: python中的上下文管理器
+title: Context manager in Python
 tags: python
 date: 2014-03-14 17:13:46
 format: md

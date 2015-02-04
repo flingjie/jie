@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <title>Jie&#039;s Blog</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link href="http://127.0.0.1:8000/blog/css/bootstrap.min.css" rel="stylesheet" media="screen"> <link href="http://127.0.0.1:8000/blog/css/custom.css" rel="stylesheet" media="screen"> <link rel="alternate" href="http://127.0.0.1:8000/blog/rss.xml" type="application/rss+xml" /> <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'jie']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </head> <body> <div class="container-fluid"> <div class="row-fluid"> <div class="offset2 span8"> <div class="row-fluid"> <div class="navbar navbar-inverse"> <div class="navbar-inner"> <a class="brand" href="http://127.0.0.1:8000/blog">Jie&#039;s Blog</a> <ul class="nav"> <li><a href="http://127.0.0.1:8000">Home</a></li> </ul> </div> </div> </div> <div class="row-fluid"> <div class="row-fluid">
+<h1 class="page-header">Metaprogramming(ObjectModel)</h1>
+<p> Tagged as <a href="http://127.0.0.1:8000/blog/tag/ruby.html">ruby</a>, <a href="http://127.0.0.1:8000/blog/tag/mindmap.html">mindmap</a> </p> <p class="date-posted"> Written on 2014-05-02 20:44:57 </p> <p>在Ruby程序中，除了对象之外，还有类、模块以及实例变量这些语言构件。这
+些语言构件存在于其中的系统称为<strong>对象模型</strong>。在对象模型中，你可以找到诸
+如&quot;这个方法来自哪个类&quot;和&quot;当我包含这个模块是会发生什么&quot;此类问题的答案。
+<br>
+{% img /static/img/ObjectModel.png %}
+<br>
+* 注1: class关键字更像是一个作用域操作符而不是类型声明语句，它的确可以
+  创建一个还不存在的类，不过也可以把这看成是一个副作用。对于class关键
+  字，其核心任务是把你带到类的上下文中，让你可以在其中定义方法。</p>
+
+<ul>
+<li><p>注2: 修改已有类的特性时，由于粗心导致bug，像这种鲁莽的修改方式被称为
+  猴子补丁。不过，如果是正确的运行打开类这种技术，猴子补丁也可以表示为
+  一个褒义词，会很有用。</p></li>
+<li><p>注3: 对象是一组实例变量外加一个指向其类的引用。对象的方法并不存在于对象本身，而是存在于对象的类中。在类中，这些方法被称为类的实例方法。
+类是一个对象（Class类的一个实例）外加一组实例方法和一个对其超类的引用。
+值得注意的是，实例变量存放在对象中，而方法存放在类中，比如</p></li>
+</ul>
+
+<pre><code>class MyClass
+  def my_method
+    @v = 1
+  end
+end
+
+obj = MyClass.new
+obj.class              # => MyClass</code></pre>
+
+<p>上面代码结构可表示为：
+{% img /static/img/ObjectClass.png %}</p>
+
+<ul>
+<li><p>注4: 一个类只不过是一个增强的Module，它只是在Module基础上增加了三个
+  方法——new()、allocate()和superclass()而已，结构如下。
+  {% img /static/img/ModuleClass.png %}</p></li>
+<li><p>注5: 每个类都有一个祖先链，这个链从自己所属的类开始，向上直到BasicObject结束。其中，Object类包含了Kernel模块，故Kernel方法对所有对象可用。</p></li>
+</ul>
+ <ul class="pager"> <li class="previous"><a href="http://127.0.0.1:8000/blog/posts/MetaprogrammingTutorial.html">&larr; Previous</a></li>
+<li class="next"><a href="http://127.0.0.1:8000/blog/posts/MetaprogrammingMethods.html">Next &rarr;</a></li>
+</ul> </div>
+ </div>  <div class="row-fluid"> <hr> <p class="fineprint">Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://127.0.0.1:8000/blog/img/cc-by-sa.png" /> </a> by Jie <a id="coleslaw-logo" href="https://github.com/redline6561/coleslaw"> <img src="http://127.0.0.1:8000/blog/img/logo_small.jpg" alt="Coleslaw logo" /></p> </a> </div> </div> </div> </div> <script src="http://127.0.0.1:8000/blog/js/bootstrap.min.js"></script> </body> </html>
