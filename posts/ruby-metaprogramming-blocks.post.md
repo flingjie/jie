@@ -1,0 +1,47 @@
+;;;;;
+title: Ruby元编程 思维导图4(代码块)
+tags: ruby, mindmap
+date: 2014-05-03 17:06:28 
+format: md
+;;;;;
+
+块继承自“函数式编程语言(functional programming languages)”的世界。
+<br>
+{% img /static/img/blocks.png %}
+<br>
+* 注1: 在一个方法中，可以向Ruby询问当前的方法调用是否包含块。这可以通
+  过Kernel#block_given?()方法来做到。
+
+* 注2: 如果在一个扁平作用域中定义了多个方法，这这些方法可以用一个作用
+  域们进行保护，并共享绑定，这种技术称为共享作用域。
+  
+* 注3: 传递给instance_eval()方法的块称为一个上下文探针，因为它就像是一
+  个深入到对象中的代码片段，对其操作。
+  
+``` ruby
+class C
+  def initialize
+    @x="a private instance variable"
+  end
+end
+
+obj=C.new
+obj.instance_eval(@x) #=>"a private instance variable"
+```
+
+ * 注4: 有时，你会创建一个对象，仅仅是为了在其中执行块。这样的对象称为洁净室。洁净室仅仅是一个用来执行块的环境，它通常还会暴露若干有用的方法供块调用。
+ 
+``` ruby
+class CleanRoom
+  def a_useful_method(x);x*2;end
+end
+
+CleanRoom.new.instance_eval{a_useful_method(3)}  #=>6
+```
+
+* 注5: 1.return方式不同。lambda从可调用对象中返回，而proc从原始上下文中返回。
+2.参数检查方式不同。如果lambda的产生数量不对，这它会失败，同时抛出一个
+ArgumentError错误；而proc则会自动调整传递进来的参数，通过忽略多余的参
+数以及为未赋值参数置nil。
+
+* 注6: Method对象类似于lambda，但是有一个重要的区别：lambda在它的作用域中执行(它是一个闭包)，而Method对象会在它自身所在对象的作用域中执行。
