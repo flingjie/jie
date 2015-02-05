@@ -2,11 +2,12 @@
  :deploy-dir "~/quicklisp/local-projects/jie/blog"
  :domain "http://127.0.0.1:8000/blog"
  :feeds ("jie")
- :plugins ((analytics :tracking-code "jie")
+ :plugins (; (analytics :tracking-code "jie")
            ; (disqus :shortname "Jie's Blog")
            ; (incremental)  ;; *Remove comment to enable incremental builds.
            (mathjax)
            (sitemap)
+           (static-pages)
           )
   :routing ((:post           "posts/~a")
             (:tag-index      "tag/~a")
