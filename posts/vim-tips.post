@@ -1,0 +1,9 @@
+;;;;;
+title: vim tips
+tags: vim, tips
+date: 2015-02-06 22:31:15
+format: md
+;;;;;
+
+* 缩进： 10 >>
+* 宏： qa q @a
