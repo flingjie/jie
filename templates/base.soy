@@ -6,6 +6,8 @@
 {template base}
   <html>
     <head>
+      <link href="/static/css/bootstrap.min.css" type="text/css"
+        rel="stylesheet">
       {$head |noAutoescape}
     </head>
     <body>
@@ -35,6 +37,14 @@
 
       <div class="container">
         {$content | noAutoescape}
+      </div>
+      <br>
+      <div class="container">
+        <hr>
+        <div class="text-center">
+          <p class="fineprint">Unless otherwise credited all material
+            by jie</p>
+        </div>
       </div>
     </body>
   </html>

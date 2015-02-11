@@ -1,6 +1,3 @@
-var delete_gist = function(){
-}
-
 var save = function(){
     var title = $("input.title").val();
     var content = editor.codemirror.getValue();
@@ -16,5 +13,5 @@ var save = function(){
 };
 
 var cancel = function(){
-    window.Location.herf = "/";
+    window.location.href = "/";
 }
