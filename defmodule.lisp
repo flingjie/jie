@@ -3,7 +3,8 @@
           :restas
           :coleslaw
           :cl-mongo
-          :cl-json))
+          :cl-json
+          :closure-template))
 
 (in-package :jie)
 

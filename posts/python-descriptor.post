@@ -8,7 +8,7 @@ format: md
 在python中一个描述器就是定义下面的方法中一个或多个的一个对象：
 
 ``` python
-__get__(self, instance, owner)
+__get__(self, instance, owner)t
 __set__(self, instance, value)
 __delete__(self, instance)
 

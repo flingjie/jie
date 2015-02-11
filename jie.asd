@@ -9,11 +9,15 @@
     :description "Jie's knowledge management system"
     :components ((:file "defmodule")
                  (:file "views" :depends-on ("defmodule"))
+                 (:file "models" :depends-on ("defmodule"))
                  (:file "controllers"
-                        :depends-on ("defmodule" "views")))
+                        :depends-on ("defmodule"
+                                     "views"
+                                     "models")))
     :depends-on (:restas
                  :restas-directory-publisher
                  :cl-mongo
                  :cl-json
+                 :closure-template
                  :coleslaw
                  :closure-template))
