@@ -60,7 +60,9 @@ $(document).on('ready', function(){
     });
 
     // server request start
-
+    var advanceTask = function(task){
+        var modified = task.innerHTML.trim();
+    };
     // server request end
 
     $(".container").bind("DOMSubtreeModified", function(e){
