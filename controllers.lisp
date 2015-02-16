@@ -36,3 +36,4 @@
 (defun render-template (head content)
   (views:base (list :head head
                     :content content)))
+

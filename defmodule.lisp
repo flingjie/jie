@@ -17,5 +17,7 @@
 (defparameter *blog-directory*
   (merge-pathnames #P"blog/" jie-config:*base-directory*))
 
+(setf hunchentoot:*show-lisp-errors-p* t)
+
 (defun start-jie ()
   (start ':jie :port 8000))
