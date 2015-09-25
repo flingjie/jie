@@ -24,10 +24,8 @@
 **********************************************************/
 {template content}
   <div class="editor-wrapper">
-    <input class="title" type="text" value="{$gist.title}">
-    <textarea id="editor">
-      {$gist.content}
-    </textarea>
+    <input class="title" type="text" value="{$gist.title}" placeholder="title">
+    <textarea id="editor">{$gist.content}</textarea>
     <div>
       <div class="col-md-3">
       </div>

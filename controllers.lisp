@@ -30,9 +30,6 @@
   (let ((gist (find-one-gist (hunchentoot:url-decode id))))
     (render-template (editor:head) (editor:content (list :gist gist)))))
 
-(define-route gtd ("gtd")
-  (render-template (gtd:head) (gtd:content)))
-
 (defun render-template (head content)
   (views:base (list :head head
                     :content content)))

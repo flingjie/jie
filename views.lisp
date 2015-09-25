@@ -4,7 +4,5 @@
 (compile-template :common-lisp-backend
                   (merge-pathnames "gist.soy" *templates-directory*))
 (compile-template :common-lisp-backend
-                  (merge-pathnames "gtd.soy" *templates-directory*))
-(compile-template :common-lisp-backend
                   (merge-pathnames "editor.soy" *templates-directory*))
 
