@@ -1,5 +1,5 @@
 (:author "Jie"
- :deploy-dir "~/quicklisp/local-projects/jie/blog"
+ :deploy-dir "~/workspace/blog"
  :domain "http://127.0.0.1:8000/blog"
  :feeds ("lisp")
  :plugins ((mathjax)

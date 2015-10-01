@@ -1,6 +1,9 @@
-(defpackage :jie-config (:export *base-directory*))
+(defpackage :jie-config (:export *base-directory* *blog-directory*))
 (defparameter jie-config:*base-directory*
   #P"~/quicklisp/local-projects/jie/")
+(defparameter jie-config:*blog-directory*
+  #P"~/workspace/blog/")
+
 
 (asdf:defsystem :jie
     :name "jie"

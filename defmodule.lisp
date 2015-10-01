@@ -14,8 +14,7 @@
   (merge-pathnames #P"templates/" jie-config:*base-directory*))
 (defparameter *static-directory*
   (merge-pathnames #P"static/" jie-config:*base-directory*))
-(defparameter *blog-directory*
-  (merge-pathnames #P"blog/" jie-config:*base-directory*))
+(defparameter *blog-directory* jie-config:*blog-directory*)
 
 (setf hunchentoot:*show-lisp-errors-p* t)
 
